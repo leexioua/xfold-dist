@@ -1,0 +1,34 @@
+; 配置说明请参考 readme@xfold.pdf
+; 示例参考 keys-default.txt
+
+
+
+
+
+
+
+
+; 以下为测试用例参考
+; $^o $^o => alert(123)
+; $F1 $F1 $F1 => ahkCmd2AltRun
+; $F3 $F3 $F3 => everythingTerms2AltRun
+; 1 1 => open(notepad)
+; 1 1 => safeActivate(%eudic%)
+; ^m => safeActivate(%eudic%)
+; r r@notepad.exe => alert(123);info(1334);alert(333)
+; /@SumatraPDF.exe => open(%Help_SumatraPDF%)
+; LButton+/ / / => copyTitleTextSingleline
+; LButton+1 1 => copyTitleTextSingleline
+; LButton+e e => eshelperQuery
+; LButton+f f f => eudicQuery
+; LButton+n n n n => alert({%p})
+; LButton+n n n n => open(notepad)
+; LButton+n n n n"] => open(%SublimeText% {%p}, d:\text.txt)
+; LButton+n n n n"] => open(%SublimeText%, d:\text.txt)
+; LButton+r r@notepad.exe => alert(123)
+; LButton+r r@sublime_text.exe => findIt
+; LButton+Space => send({Enter})
+; LButton+w => send({raw}{%x},300);send(^!d)
+; LButton+x => open(https://wyagd001.github.io/zh-cn/docs)
+; LButton+c c c c => send(^c);info(has been copied.)
+; holdonLBtnWhen("c")
