@@ -13,24 +13,24 @@
 - 扩展动作的命令参数通过变量或人工输入 {%p} {%c} {%x}
 
 ## 功能简介
-- 英语查词 LButton+e
-- 文本编辑器打开 LButton+a
-- 快捷Everything查找文件 LButton+f @依赖Everything
-- 快速打开 LButton+r
-- Welink发消息 LButton+w
-- W3查询人员信息 LButton+3/LButton+w w
-- 复制窗口标题及选择内容 LButton+t / LButton+t t / LButton+t长按
-- 笔记收藏 LButton+s
+- 英语查词 - 选择文本后 LButton+e
+- 文本编辑器打开 - 选择文本或文件后 LButton+a
+- 快捷Everything查找文件 - 选择文本或文件后 LButton+f @依赖Everything
+- 快速打开 - 选择文本后 LButton+r
+- Welink发消息 - 选择文本后 LButton+w
+- W3查询人员信息 - 选择文本后 LButton+3/LButton+w w
+- 复制窗口标题及选择内容 - *选择文本后 LButton+t / LButton+t t / LButton+t长按
+- 笔记收藏 - 选择文本后 LButton+s
 - 在资源管理器中，保存剪贴板内容为文件 LButton+Ctrl+v
 - 在资源管理器中，文本编辑器打开 Alt+e
 - 在文件打开保存对话框中，跳转到当前资源管理器活动的目录 Ctrl+Q
 - 常用搜索
-	+ Google: LButton+g
-	+ Baidu: LButton+b
-	+ Zhihu: LButton+z
-	+ Douban: LButton+d
+	+ Google: - 选择文本后 LButton+g
+	+ Baidu: - 选择文本后 LButton+b
+	+ Zhihu: - 选择文本后 LButton+z
+	+ Douban: - 选择文本后 LButton+d
 - 热字串替换功能，支持扩展定义 如：输入"]d" 替换为 20230508 即当天时间的字符串
-- 以上为内置的默认功能，可定义扩展更多
+- 以上为内置的默认功能，可配置扩展定义更多
 
 ## 快捷键速查
 - xfold-shortcuts.xlsx
