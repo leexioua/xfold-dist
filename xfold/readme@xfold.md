@@ -1,36 +1,44 @@
 # 软件说明 \<xfold\> ten-fold
+
 ## 设计背景
-- 名字取自于编写初衷： 折叠时间 <=> ten-fold（十倍效率）
+- 软件名称源于编写初衷： 折叠时间 <=> ten-fold（十倍效率）
 - 解决需要经常执行的操作场景，折叠节省重复操作的时间
 	+ 如网页搜索，查单词，查找本地文件，打开常用文件等等
 - 软件当前主要为自用，配置快捷键偏技术略复杂，另相关动作扩展可能需要编码，使用门槛偏高
 
-## 独特点
-- 扩展 LButton+e 操作平面， 按住LButton 击键e，鼠标划词或选择后操作较便捷
-	+ Tips: 按住ESC+e <==> LButton+e (不足：当操作的窗口按Esc触发关闭情况 仍需要使用LButton+e)
-- 单键，双键，三键，长按快捷键平面 支持定义更多的快捷键, 有效帮助解决快捷键不足和难以记忆问题
-- 可指定特定应用的局部快捷键 e@chrome.exe => xxx
-- 扩展动作的命令参数通过变量或人工输入 {%p} {%c} {%x}
-
 ## 功能简介
-- 英语查词 LButton+e
-- 文本编辑器打开 LButton+a
-- 快捷Everything查找文件 LButton+f @依赖Everything
-- 快速打开 LButton+r
-- Welink发消息 LButton+w
-- W3查询人员信息 LButton+3/LButton+w w
-- 复制窗口标题及选择内容 LButton+t / LButton+t t / LButton+t长按
-- 笔记收藏 LButton+s
+```js
+ten-fold（十倍效率）主要是配置定义常用功能的快捷键小工具。
+通过扩展LButton组合键，双键，三键以及长按的快捷键，缓解快捷键占用以及不容易记忆的问题。
+快捷键的操作动作支持如打开文件，目录，网址以及打开窗口，发送按键等常用动作。
+默认配置了部分实用功能，可作为参考示例，简单修改定义自己习惯的快捷键及触发动作任务。
+```
+### 功能示例
+- 英语查词 - 选择文本后 LButton+e
+- 文本编辑器打开 - 选择文本或文件后 LButton+a
+- 快捷Everything查找文件 - 选择文本或文件后 LButton+f @依赖Everything
+- 快速打开 - 选择文本后 LButton+r
+- Welink发消息 - 选择文本后 LButton+w
+- W3查询人员信息 - 选择文本后 LButton+3/LButton+w w
+- 复制窗口标题及选择内容 - *选择文本后 LButton+t / LButton+t t / LButton+t长按
+- 笔记收藏 - 选择文本后 LButton+s
 - 在资源管理器中，保存剪贴板内容为文件 LButton+Ctrl+v
 - 在资源管理器中，文本编辑器打开 Alt+e
 - 在文件打开保存对话框中，跳转到当前资源管理器活动的目录 Ctrl+Q
 - 常用搜索
-	+ Google: LButton+g
-	+ Baidu: LButton+b
-	+ Zhihu: LButton+z
-	+ Douban: LButton+d
+	+ Google: - 选择文本后 LButton+g
+	+ Baidu: - 选择文本后 LButton+b
+	+ Zhihu: - 选择文本后 LButton+z
+	+ Douban: - 选择文本后 LButton+d
 - 热字串替换功能，支持扩展定义 如：输入"]d" 替换为 20230508 即当天时间的字符串
-- 以上为内置的默认功能，可定义扩展更多
+- 以上为内置的默认功能，可配置扩展定义更多
+
+## 主要创新
+- 扩展LButton组合快捷键，如LButton+e，指按住鼠标左键LButton再击键e，这类快捷键在鼠标划词或选择文本或文件后操作比较方便。
+	+ Tips: LButton组合键，LButton可用ESC键代替，ESC+e <==> LButton+e (不足：当操作的窗口按Esc触发关闭情况 仍需要使用LButton+e)
+- 扩展双键，三键，长按快捷键 支持定义更多的快捷键, 帮助解决快捷键占用，不足以及难记忆的问题
+- 支持定义只在特定应用内生效的局部快捷键 如：e@chrome.exe => open("http://xxxx")
+- 设计动作定义参数，并提供友好输入，如使用系统环境变量，配置变量或人工输入等 %appdata% {%p} {%c} {%x}
 
 ## 快捷键速查
 - xfold-shortcuts.xlsx
@@ -51,32 +59,20 @@
 	+ 可选：welink
 	+ 可选：FileLocator
 	+ 可选：Active Desktop Calender
-	+ 可选：Seer
+	+ 可选：QuickLook
 - 个人自用脚本参考
 	+ 已打包保存在 cmds\cmds-for-leexioua.zip
-	+ D:\Links\ahk-cmd.ahk
-	+ D:\Links\ahk\xfold\xfold-cmd.ahk
-	+ D:\Links\ahk\xfold\xfold.ahk
-	+ D:\Links\collect-cmd-v2.bat
-	+ D:\Links\evernote\evernote-cmd.ahk
-	+ D:\Links\evernote\evernote-cmds.bat
-	+ D:\Links\everything\everything-cmd.ahk
-	+ D:\Links\everything\everything-cmds.bat
-	+ D:\Links\filelocator\locator-cmd.ahk
-	+ D:\Links\settings-bak\UserData\matebook\bak-config-cmd.bat
-	+ D:\Links\work-x1\mail-cmd.ahk
-	+ 更多：xfold.ini - Cmd_xxx
-- 系统环境变量
+- 系统环境变量：可选 (脚本运行需要设置)
 	+ Path=%Path%;D:\ProgramxFiles\AutoHotkey\AutoHotkey.exe
 - 更多 >> 软件配置项：xfold.ini
 
-## 快捷键映射配置说明
-- 默认快捷键映射配置文件 keys-default.txt 如果需更改为其它文件名称，可以在 xfold.ini - [settings] - keymappings项修改
-- 参考配置示例，增加修改即可，映射包括快捷键及动作两部分 以 => 分隔
+## 快捷键配置说明
+- 默认快捷键配置文件 keys-default.txt 如果需更改为其它文件名称，可以在 xfold.ini - [settings] - keymappings项修改
+- 参考配置示例，增加修改即可，映射包括快捷键及动作两部分 以 “=>” 分隔
 	+ 如 ^m => SafeActivate(%eudic%) 中
 		* ^m 为快捷键， SafeActivate(%eudic%) 为动作
-	+ 同一快捷键如果被定义多次，只使用最后一次定义，不会触发多个动作，即覆盖更新原则
-		* 如需要触发多个动作，动作列表可使用分号 (;) 分隔进行定义
+	+ 如果同一快捷键被定义多次，只有最后一次定义生效，不是所有定义生效，即不会触发多个动作，采取覆盖更新原则
+		* 如果需要触发多个动作，动作列表可使用分号 (;) 分隔进行定义
 ### 快捷键定义
 - 快捷键修饰符
 	+ \# => Win 、 ^ => Ctrl 、 ! => Alt 、 \+ => Shift
@@ -101,7 +97,7 @@
 		重复四次及以上视作长按
 		$F1 $F1 $F1 $F1 => alert("holding-pressed: F1")
 		```
-	+ LButton+组合键
+	+ LButton组合键
 		```js
 		LButton+a => edit
 		LButton+g => open(https://www.google.com/search?q={%x})
@@ -117,7 +113,7 @@
 		$F8 $F8@sublime_text.exe => srcAhkSearch
 		```
 ### 动作定义
-- 内置动作
+- 内置动作函数
 	```js
 	^(\w+)\(.*\)
 	参考：keys-default.txt
@@ -131,7 +127,7 @@
 	edit(filename)
 	preview(filename)
 	reload()
-	send(keys, delay := 0) 
+	send(keys, delay := 0)
 	sleep(delay)
 	safeActivate(program, activate:=True, miniWhenActive := False)
 	value(key, val := "")
@@ -304,6 +300,7 @@ open("c:\windows\notepad.exe")
 	; 默认重启快捷键为：Ctrl+Alt+R，可根据习惯修改为其它快捷键
 	^!r => reload
 
+
 	$F5 $F5 $F5 $F5 => {%p}
 
 	LButton+3 => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
@@ -364,10 +361,10 @@ open("c:\windows\notepad.exe")
 
 
 	; explorer plugin
+	!e@explorer.exe => edit
+	LButton+^v@explorer.exe => explorer_clipboardSave2Txt
 	; 文件对话框跳转到当前资源管理器活动的目录 Ctrl+Q 可根据需要修改 如Ctrl+D
 	explorer_dialogueJump(~^q)
-	LButton+^v@explorer.exe => explorer_clipboardSave2Txt
-
 	```
 - %A_ScriptDir%\keys-leexioua.txt
 	```js
@@ -381,7 +378,8 @@ open("c:\windows\notepad.exe")
 	#!n => safeActivate(%Evernote%)
 	~^!k => safeActivate(%keepass%,0)
 	#` => restartAltRun
-	#s => restartSeer
+	#q => restartQuickLook
+
 	^RButton => mouseinc_clipboardMenu
 
 	$F10 $F10 => toggleSwitchOn
@@ -394,12 +392,9 @@ open("c:\windows\notepad.exe")
 	+XButton2 => send(^!+-)
 	XButton2 => send(^!+=)
 
-
-
 	; configback plugin
 	#!F5 => configbak_Backup
 	configbak_MonthlyBackup()
-
 
 	$` $` => send(#!q)
 	$^` $^` => ``send(#!q)
@@ -420,7 +415,6 @@ open("c:\windows\notepad.exe")
 	$F9 $F9 $F9 => toAltRun_mailCmd
 	;$F2 $F2 $F2 => toAltRun_ahkCmd
 
-
 	$F1 $F1 $F1 $F1 => send(#!{F1})
 	$F2 $F2 $F2 $F2 => markdown_clipboardImageURI({%c})
 	$F3 $F3 $F3 $F3 => send(#!{F3})
@@ -429,7 +423,6 @@ open("c:\windows\notepad.exe")
 	$F9 $F9 $F9 $F9 => open(%Cmd_MailCmd% {%p})
 	$F10 $F10 $F10 $F10 => getAccInfo
 	$F12 $F12 $F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs)
-
 
 	LButton+^c => stripCopy
 
@@ -453,7 +446,6 @@ open("c:\windows\notepad.exe")
 	LButton+5 5 => edit(%A_ScriptDir%\xfold.ini)
 	LButton+v v => open(https://forvo.com/search/{%x})
 
-
 	LButton+$F10 $F10 $F10 $F10 => getAccAllText
 	LButton+a a a a => viewAhkFile({%x})
 	LButton+f f f f => finditByEverythingFullPath({%x})
@@ -462,17 +454,11 @@ open("c:\windows\notepad.exe")
 	LButton+v v v v => send(^c);edit(%temp%\vholder-xfold.txt);send(^{end}{enter}^v, 500)
 
 	/@SumatraPDF.exe => open(%Help_SumatraPDF%)
-	*/@seer.exe => open(%Help_Seer%);delayCall(1000,winTopToggle)
-
 
 	^d@sublime_text.exe => send(^+k)
 	^e@sublime_text.exe => send(^p)
-	$F8 $F8@sublime_text.exe => srcAhkSearch({%x})
-
-	;疑似引起!c冲突
-	;!c !c@sublime_text.exe => mdCheckToggle
-
-	LButton+1@sublime_text.exe => sublimetext_seerPreview
+	;!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
+	LButton+1@sublime_text.exe => send(!c);preview({%c})
 	LButton+8@sublime_text.exe => sublimetext_convertToUTF8
 	LButton+m m@sublime_text.exe => sublimetext_markdownSyntax
 	LButton+x x@sublime_text.exe => mdCheckToggle
@@ -488,7 +474,6 @@ open("c:\windows\notepad.exe")
 	LButton+a@FileLocatorPro.exe => send(+!c);edit({%c})
 
 	!c@WizTree64.exe => send(^!c)
-
 	e@Koodo.exe => eudicQuery
 	e@SumatraPDF.exe => eudicQuery
 
@@ -499,6 +484,15 @@ open("c:\windows\notepad.exe")
 	RAlt@eudic.exe => send(^!+{Space})
 
 	SwitchOn+e => eudicQuery
+	;SwitchOn+a => edit({%x})
+	;SwitchOn+b => open(https://www.baidu.com/s?wd={%x})
+	;SwitchOn+d => open(https://www.douban.com/search?q={%x})
+	;SwitchOn+g => open(https://www.google.com/search?q={%x})
+	;SwitchOn+s => saveNotes
+	;SwitchOn+z => open(https://www.zhihu.com/search?type=content&q={%x})
+	;SwitchOn+, => open(https://youglish.com/pronounce/{%x}/english?)
+	;SwitchOn+. => open(https://youglish.com/pronounce/{%x}/spanish?)
+	;SwitchOn+f => findIt({%x})
 	;SwitchOn+f@chrome.exe => findit
 
 
@@ -522,7 +516,6 @@ open("c:\windows\notepad.exe")
 
 	; LButton+ESC ESC ESC ESC@sublime_text.exe => sublimetext_closeAll
 	; $F4 $F4 $F4 $F4 => open(autohotkey.exe D:\Links\everything\everything-cmd.ahk ext:md dm:>=202001 path:D:\Workspace|D:\2Assort {%p})
-	; */@seer.exe => seer_Help
 	; SwitchOn+f => alert(f1)
 	; SwitchOn+f f => alert(f2)
 	; SwitchOn+f f f => alert(f3)
@@ -531,12 +524,12 @@ open("c:\windows\notepad.exe")
 	; SwitchOn+LButton+f f => alert(lbtn+f2)
 	; SwitchOn+LButton+f f f => alert(lbtn+f3)
 	; SwitchOn+LButton+f f f f=> alert(lbtn+f4)
-
 	```
 	
 # 更新日志
 ## 遗留优化 TODO
 - Cmds友好使用界面 参考： AHK Command Picker
+- 增加定义快捷键查找功能
 - 代码走读 整理优化 增加打印日志，异常处理
 - Send发送前进行检查等待窗口，如未找到窗口取消发送文本
 - 当前发现已知问题，sublime text 中LButton+1预览功能发送!c 与!c !c快捷键定义冲突， 原因：SendLevel 发送的脚本定义的热键是否需要被激活
@@ -550,6 +543,13 @@ open("c:\windows\notepad.exe")
 - 自动化测试/用例
 - 迁移到Autohotkey2.0
 - Github代码管理
+
+## 20230511: 1.1.5
++ 增强xfold-cmd，检测xfold脚本或可执行程序运行，提供外部发送命令调用接口 例：xfold-cmd.exe en table
++ 增加脚本编译可执行选项设置
++ 增加托盘菜单，菜单增加重新加载配置及关于功能
+* 快捷键定义解析处理优化，读取行后移除行尾注释(行最后包括空格分号的字符串) 例：!c@sublime_text.exe => xxx ; copy path@sublime_text 
+* 移除seer插件
 
 ## 20230508: 1.1.4
 + 增加后台运行打开功能, 命令行以“ -hidden” 例：open("xxx -hidden")
