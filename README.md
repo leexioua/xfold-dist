@@ -33,6 +33,9 @@ ten-fold（十倍效率）是一个快捷键小工具，可以配置定义常用
 - 热字串替换功能，支持扩展定义 如：输入"]d" 替换为 20230508 即当天时间的字符串
 - 以上为内置的默认功能，可配置扩展定义更多
 
+- 个人配置快捷键
+![image](https://github.com/leexioua/xfold-dist/assets/4453233/c9b62105-cce1-40fc-a72e-f709da48f896)
+
 ## 主要创新
 - 扩展LButton组合快捷键，如LButton+e，指按住鼠标左键LButton再击键e，这类快捷键在鼠标划词或选择文本或文件后操作比较方便。
 	+ Tips: LButton组合键，LButton可用ESC键代替，ESC+e <==> LButton+e (不足：当操作的窗口按Esc触发关闭情况 仍需要使用LButton+e)
