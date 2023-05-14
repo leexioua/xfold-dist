@@ -1,6 +1,6 @@
 ; 个人使用快捷键配置，依赖相关工具软件 xfold.ini @leexioua
-; key for test
-; $F2 $F2 => clipboard({%x});safeActivate(%eudic%);send(^v,200)
+
+; $F2 $F2 => clipboard({%x});safeActivate(%eudic%);send(^v,200) ; key for test
 
 $F1 => {%p}
 $` => send(!r)
@@ -10,7 +10,7 @@ $` => send(!r)
 #` => restartAltRun
 #q => restartQuickLook
 
-^RButton => mouseinc_clipboardMenu
+^RButton => clipboard({%x});send(^!+x,200)
 
 $F10 $F10 => toggleSwitchOn
 
@@ -32,25 +32,27 @@ $^` $^` => ``send(#!q)
 
 $F1 $F1 => {%p}
 $F2 $F2 => open(D:\ProgramxFiles\BeyondCompare4\BCompare.exe)
-$F3 $F3 => open(%Cmd_EverythingCmds%)
+$F3 $F3 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
 $F4 $F4 => redo
+$F5 $F5 => gtd
 $F6 $F6 => open(https://dida365.com/webapp/)
 $F7 $F7 => open(%Cmd_EvernoteCmds%)
+$F8 $F8 => open(%Cmd_EverythingCmds%)
+$F9 $F9 => open(%Cmd_MailCmd% {%p})
 $F11 $F11 => adcTaskAdd
 $F12 $F12 => alertLastCmd
 
-$F1 $F1 $F1 => {%p}
-$F5 $F5 $F5 => toAltRun_xfoldCmd
+$F1 $F1 $F1 => toAltRun_xfoldCmd
 $F7 $F7 $F7 => toAltRun_evernoteTerms
+$F8 $F8 $F8 => toAltRun_everythingTerms
 $F9 $F9 $F9 => toAltRun_mailCmd
 ;$F2 $F2 $F2 => toAltRun_ahkCmd
 
 $F1 $F1 $F1 $F1 => send(#!{F1})
-$F2 $F2 $F2 $F2 => markdown_clipboardImageURI({%c})
+$F2 $F2 $F2 $F2 => markdown_clipboardImageURI
 $F3 $F3 $F3 $F3 => send(#!{F3})
 $F4 $F4 $F4 $F4 => gtd
-$F7 $F7 $F7 $F7 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
-$F9 $F9 $F9 $F9 => open(%Cmd_MailCmd% {%p})
+$F7 $F7 $F7 $F7 => 
 $F10 $F10 $F10 $F10 => getAccInfo
 $F12 $F12 $F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs)
 
@@ -87,7 +89,7 @@ LButton+v v v v => send(^c);edit(%temp%\vholder-xfold.txt);send(^{end}{enter}^v,
 
 ^d@sublime_text.exe => send(^+k)
 ^e@sublime_text.exe => send(^p)
-;!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
+!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
 LButton+1@sublime_text.exe => send(!c);preview({%c})
 LButton+8@sublime_text.exe => sublimetext_convertToUTF8
 LButton+m m@sublime_text.exe => sublimetext_markdownSyntax
@@ -100,7 +102,9 @@ LButton+x x@sublime_text.exe => mdCheckToggle
 !Left@ADC.exe => adc_execute(Move Task Top)
 !Right@ADC.exe => adc_execute(Move Task Bottom)
 
-!e@FileLocatorPro.exe => filelocator_editSelectedFile
+^+c@excel.exe => excel_BrushStart
+
+!e@FileLocatorPro.exe => send(!+c);sleep(200);edit({%c})
 LButton+a@FileLocatorPro.exe => send(+!c);edit({%c})
 
 !c@WizTree64.exe => send(^!c)
