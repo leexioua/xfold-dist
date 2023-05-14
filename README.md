@@ -55,6 +55,7 @@ ten-fold（十倍效率）是一个快捷键工具，可以将常用重复的操
 - xfold-shortcuts.xlsx
 - xfold-shortcuts-default.pdf
 - xfold-shortcuts-leexioua.pdf
+![image](https://github.com/leexioua/xfold-dist/assets/4453233/d63412a2-a3c2-41f2-aa0e-285a1645c66e)
 
 ## 环境准备依赖
 - 软件运行环境
