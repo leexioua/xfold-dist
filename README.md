@@ -248,8 +248,8 @@ tooltip(str := "")|Tooltip提示
 value(key, val := "")|设置或读取变量值
 winMinimize()|最小化窗口
 winTopToggle()|置顶或取消置顶当前窗口
-winTransparentDown(w := 0)|当前窗口透明度增强
-winTransparentUp(w := 0)|当前窗口透明度--
+winTransparentDown(w := 0)|当前窗口增加透明
+winTransparentUp(w := 0)|当前窗口减弱透明
 
 - 自定义动作
 	+ 在 xfold.ini - [Cmds] 可自定义动作，默认调用open函数打开
