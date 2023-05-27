@@ -1,5 +1,6 @@
-; 配置说明请参考 readme@xfold.pdf
+; 配置说明请参考 README.pdf
 ; 示例参考 keys-default.txt
 
-
-
+LButton+3 => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
+LButton+w => send({raw}{%x},300);send(^!d)
+LButton+w w => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
