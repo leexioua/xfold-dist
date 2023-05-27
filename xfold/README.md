@@ -246,6 +246,7 @@ run(cmd, param := "")|同 open
 safeActivate(program, activate:=True, miniWhenActive := False)|打开激活应用程序窗口
 saveNotes(text := "")|保存文本到笔记
 send(keys, delay := 0)|发送按键或文本
+show(title)|激活显示标题中包含指定文本的窗口，有多个窗口匹配时显示最近打开的窗口
 sleep(delay)|中断等待
 stripLine(string, replace := "")|移除行首行尾相关字符，包括空格，回车换行，markdown项目编号及checkbox
 title(removeTail := true)|获取当前活动窗口的标题
@@ -603,8 +604,10 @@ Browser_Home => send(#d)
 ; SwitchOn+LButton+f f f => alert(lbtn+f3)
 ; SwitchOn+LButton+f f f f=> alert(lbtn+f4)
 ```
+## 6. 贡献
+- 感谢Esther设计应用图标
 
-	
+
 # 更新日志
 ## 遗留优化 TODO
 - 拦截按键功能，动作未成功发送按键，保留按键原有功能 Tab@explorer => showQuickLook
@@ -624,7 +627,7 @@ Browser_Home => send(#d)
 + 优化Cmds定义 @xfold.ini。加载逻辑同Settings，优化加载读取 [Cmds]，未读取到再加载[Cmds-default]
 + 优化Hotstrings定义 @xfold.ini。加载逻辑同Settings，优化加载读取 [Hotstrings]，未读取到再加载[Hotstrings-default]
 + 增加QuickLook窗口激活功能 例： Tab@explorer => showQuickLook({Tab})
-+ 增加show(title) 激活显示标题中包含指定文本的窗口，有多个窗口时匹配时显示最近打开的窗口
++ 增加show(title) 激活显示标题中包含指定文本的窗口，有多个窗口匹配时显示最近打开的窗口
 + 增加xstr(str) 转义相关保留字符, ",",";","@","(",")"
 * 更新打包应用的icon
 * 补充调整快捷键定义 @keys-leexioua.txt

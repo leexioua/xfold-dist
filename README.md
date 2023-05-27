@@ -604,8 +604,10 @@ Browser_Home => send(#d)
 ; SwitchOn+LButton+f f f => alert(lbtn+f3)
 ; SwitchOn+LButton+f f f f=> alert(lbtn+f4)
 ```
+## 6. 贡献
+- 感谢Esther设计应用图标
 
-	
+
 # 更新日志
 ## 遗留优化 TODO
 - 拦截按键功能，动作未成功发送按键，保留按键原有功能 Tab@explorer => showQuickLook
