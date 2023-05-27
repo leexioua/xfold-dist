@@ -1,7 +1,7 @@
 # xfold · ten-fold
 
 ## 1. 软件背景
-- 软件初衷：为了简化需要经常性的执行操作，折叠节省掉重复操作的时间
+- 软件初衷：为了简化需要经常性的执行操作，折叠节省不断重复的操作时间
 	+ 如网页搜索，查单词，查找本地文件，打开常用文件等等
 - 名称由来： 折叠时间 <=> ten-fold（十倍效率）
 - 主要自用，快捷键定义的高阶功能，暂使用文本编辑器配置，没有配置界面，使用门槛稍高
@@ -14,7 +14,7 @@ ten-fold（十倍效率）是一个效率提升工具，可以将常用重复的
 3. 提供自定义快捷键功能，参考示例简单修改，即可定义需要的功能。
 4. 内置有打开文件，目录，网址以及打开应用程序窗口，发送按键等基础功能供快捷键定义使用组合。
 ```
-### 2.1 功能实例
+### 2.1 功能示例
 - 英语查词 - 选择文本后 LButton+e
 - 文本编辑器打开 - 选择文本或文件后 LButton+a
 - 快捷Everything查找文件 - 选择文本或文件后 LButton+f @依赖Everything
@@ -35,15 +35,17 @@ ten-fold（十倍效率）是一个效率提升工具，可以将常用重复的
 - 以上为内置的默认功能，可配置扩展定义更多
 
 ### 2.2 特色功能
-- 扩展LButton组合快捷键，如LButton+e，指按住鼠标左键LButton再击键e
+- 扩展LButton组合快捷键
+	+ 如 LButton+e，指按住鼠标左键 LButton，再敲击键 e
 	+ 适合鼠标划词或选择文本或文件后操作的场景
-	+ 提示: LButton组合键，LButton可用ESC键代替，ESC+e <==> LButton+e
+	+ 提示: LButton组合键，LButton 可使用 ESC键 代替，ESC+e <==> LButton+e
 		```js
-		不足：当操作的窗口按Esc触发关闭情况 仍需要使用LButton+e
+		不足：当操作的窗口按Esc触发关闭或取消选择时，仍需要使用LButton+e
 		```
 - 扩展双键，三键，长按快捷键 支持定义更多的快捷键
-	+ 规避快捷键占用问题
-	+ 更多选择，帮助快捷键记忆
+	+ Ctrl/Alt/Shift等组合快捷键经常被占用，不同应用中定义还可能不同
+	+ 扩展提供更多快捷键选择，也帮助快捷键记忆
+	+ 扩展的键触发使用也简单易用，如：双击F1，比Ctrl+F1好用
 - 特定应用内生效的局部快捷键
 	```js
 	e@chrome.exe => open(https://youdao.com/result?word={%x}&lang=en)
@@ -243,7 +245,7 @@ process()|获取当前活动窗口的进程名称
 redo()|重做上一动作
 reload()|重新启动本程序
 run(cmd, param := "")|同 open
-safeActivate(program, activate:=True, miniWhenActive := False)|打开激活应用程序窗口
+safeActivate(program, activate:=True, minWhenActive := False)|打开激活应用程序窗口
 saveNotes(text := "")|保存文本到笔记
 send(keys, delay := 0)|发送按键或文本
 show(title)|激活显示标题中包含指定文本的窗口，有多个窗口匹配时显示最近打开的窗口
@@ -257,6 +259,8 @@ winTopToggle()|置顶或取消置顶当前窗口
 winTransparentDown(w := 0)|当前窗口增加透明
 winTransparentUp(w := 0)|当前窗口减弱透明
 xsend(key, count:=1, lbtn:=false, title := "")|发送xfold快捷键,调用对应功能
+xstr(str)|用于转义xfold-cmd字符串参数中特殊字符  ;=>{U+003B} ,=>{U+002C} @=>{U+0040} (=>{U+0028} )=>{U+0029}
+
 
 - 自定义动作
 	+ 在 xfold.ini - [Cmds] 可自定义动作，默认调用open函数打开
