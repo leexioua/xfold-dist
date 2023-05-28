@@ -1,6 +1,6 @@
 ; 个人使用快捷键配置，依赖相关软件工具及脚本 xfold.ini @leexioua
 
-$F1 => {%p}
+$F1 => xfoldCmdline
 $` => send(#!q)
 $^` => ``send(#!q)
 ^m => safeActivate(%eudic%)
@@ -29,7 +29,7 @@ configbak_MonthlyBackup()
 $` $` => send(!r)
 ^e ^e => eudicQuery({%x})
 
-$F1 $F1 => {%p}
+$F1 $F1 => xfoldCmdline
 $F3 $F3 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
 $F4 $F4 => redo
 $F5 $F5 => gtd
@@ -56,9 +56,8 @@ LButton+^c => stripCopy
 
 LButton+$F10 => toggleSwitchOn
 LButton+c => collectNotes
-LButton+e => value(word,{%x});send({text}value(word),200);safeActivate(%eudic%)
+; LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
 LButton+e => eudicQuery({%x})
-LButton+f => findIt({%x})
 LButton+h => open(https://www.hifini.com/search-{%x}.htm)
 LButton+i => gi({%x})
 LButton+m => gmap({%x})
@@ -126,17 +125,6 @@ RAlt@eudic.exe => send(^!+{Space})
 ^q@cmd.exe => send(!{F4})
 
 SwitchOn+e@chrome.exe => eudicQuery
-
-;SwitchOn+a => edit({%x})
-;SwitchOn+b => open(https://www.baidu.com/s?wd={%x})
-;SwitchOn+d => open(https://www.douban.com/search?q={%x})
-;SwitchOn+g => open(https://www.google.com/search?q={%x})
-;SwitchOn+s => saveNotes
-;SwitchOn+z => open(https://www.zhihu.com/search?type=content&q={%x})
-;SwitchOn+, => open(https://youglish.com/pronounce/{%x}/english?)
-;SwitchOn+. => open(https://youglish.com/pronounce/{%x}/spanish?)
-;SwitchOn+f => findIt({%x})
-;SwitchOn+f@chrome.exe => findit
 
 Tab@Everything.exe => showQuickLook({Tab})
 Tab@explorer.exe => showQuickLook({Tab})

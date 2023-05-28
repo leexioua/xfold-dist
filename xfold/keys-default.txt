@@ -6,14 +6,17 @@
 ^!r => reload ; 默认重启快捷键为：Ctrl+Alt+R，可根据习惯修改为其它快捷键
 ^!\ => toggleSwitchOn
 
-$F1 $F1 $F1 $F1 => {%p}
+$` => xfoldCmdline
+$F1 => xfoldCmdline
+$F1 $F1 => xfoldCmdline
 
 LButton+$F10 => toggleSwitchOn
 LButton+a => edit({%x})
 LButton+b => open(https://www.baidu.com/s?wd={%x})
 LButton+d => open(https://www.douban.com/search?q={%x})
 LButton+e => open(https://youdao.com/result?word={%x}&lang=en)
-LButton+f => findIt({%x})
+; LButton+f => clipboard({%x});open(::{20D04FE0-3AEA-1069-A2D8-08002B30309D});send({F3},500);send(^v,1000) ;资源管理器默认搜索
+LButton+f => findIt({%x}) ;everything搜索
 LButton+g => open(https://www.google.com/search?q={%x})
 LButton+r => run({%x})
 LButton+s => saveNotes
@@ -63,3 +66,4 @@ LButton++Tab => send(!+{Tab})
 !e@explorer.exe => edit
 LButton+^v@explorer.exe => explorer_clipboardSave2Txt
 explorer_dialogueJump(~^q) ; 文件对话框跳转到当前资源管理器活动的目录 Ctrl+Q 可根据需要修改 如Ctrl+D
+

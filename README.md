@@ -73,7 +73,7 @@ ten-fold（十倍效率）是一个效率提升工具，可以将常用重复的
 	+ 可选：QTTabBar
 	+ 可选：welink
 - 个人自用脚本参考
-	+ 已打包保存 cmds\cmds-for-leexioua.zip
+	+ 已打包保存 cmds-for-leexioua\cmds-for-leexioua.zip
 - 系统环境变量：可选 (脚本运行模式需要设置)
 	+ Path=%Path%;D:\ProgramxFiles\AutoHotkey\AutoHotkey.exe
 - 更多 >> 软件路径配置项：xfold.ini - [Settings]
@@ -82,10 +82,10 @@ ten-fold（十倍效率）是一个效率提升工具，可以将常用重复的
 ## 4. 快捷键速查
 - xfold-shortcuts.xlsx
 - xfold-shortcuts-default.pdf
-![xfold-shortcuts-default](https://github.com/leexioua/xfold-dist/assets/4453233/cf9c39fa-9347-4c94-acce-52e7c267630d)
+![xfold-shortcuts-default](https://github.com/leexioua/xfold-dist/assets/4453233/74ff3b4b-c202-4981-aa9f-ca57cc7eab5f)
 
 - xfold-shortcuts-leexioua.pdf
-![xfold-shortcuts-leexioua](https://github.com/leexioua/xfold-dist/assets/4453233/b907d862-cce7-40ce-b66d-30310c7e9289)
+![xfold-shortcuts-leexioua](https://github.com/leexioua/xfold-dist/assets/4453233/8d170e4b-9ff9-4758-959c-0817d15ce5e4)
 
 ## 5. 快捷键自定义配置
 - 默认快捷键配置文件 keys-default.txt 如果需更改为其它文件名称，可以在 xfold.ini - [Settings] - keymappings项修改
@@ -360,14 +360,17 @@ open("c:\windows\notepad.exe")
 ^!r => reload ; 默认重启快捷键为：Ctrl+Alt+R，可根据习惯修改为其它快捷键
 ^!\ => toggleSwitchOn
 
-$F1 $F1 $F1 $F1 => {%p}
+$` => xfoldCmdline
+$F1 => xfoldCmdline
+$F1 $F1 => xfoldCmdline
 
 LButton+$F10 => toggleSwitchOn
 LButton+a => edit({%x})
 LButton+b => open(https://www.baidu.com/s?wd={%x})
 LButton+d => open(https://www.douban.com/search?q={%x})
 LButton+e => open(https://youdao.com/result?word={%x}&lang=en)
-LButton+f => findIt({%x})
+; LButton+f => clipboard({%x});open(::{20D04FE0-3AEA-1069-A2D8-08002B30309D});send({F3},500);send(^v,1000) ;资源管理器默认搜索
+LButton+f => findIt({%x}) ;everything搜索
 LButton+g => open(https://www.google.com/search?q={%x})
 LButton+r => run({%x})
 LButton+s => saveNotes
@@ -417,6 +420,7 @@ LButton++Tab => send(!+{Tab})
 !e@explorer.exe => edit
 LButton+^v@explorer.exe => explorer_clipboardSave2Txt
 explorer_dialogueJump(~^q) ; 文件对话框跳转到当前资源管理器活动的目录 Ctrl+Q 可根据需要修改 如Ctrl+D
+
 ```
 - keys-user.txt
 ```js
@@ -426,6 +430,7 @@ explorer_dialogueJump(~^q) ; 文件对话框跳转到当前资源管理器活动
 LButton+3 => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
 LButton+w => send({raw}{%x},300);send(^!d)
 LButton+w w => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
+
 ```
 
 
@@ -433,7 +438,7 @@ LButton+w w => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
 ```js
 ; 个人使用快捷键配置，依赖相关软件工具及脚本 xfold.ini @leexioua
 
-$F1 => {%p}
+$F1 => xfoldCmdline
 $` => send(#!q)
 $^` => ``send(#!q)
 ^m => safeActivate(%eudic%)
@@ -462,7 +467,7 @@ configbak_MonthlyBackup()
 $` $` => send(!r)
 ^e ^e => eudicQuery({%x})
 
-$F1 $F1 => {%p}
+$F1 $F1 => xfoldCmdline
 $F3 $F3 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
 $F4 $F4 => redo
 $F5 $F5 => gtd
@@ -489,9 +494,8 @@ LButton+^c => stripCopy
 
 LButton+$F10 => toggleSwitchOn
 LButton+c => collectNotes
-LButton+e => value(word,{%x});send({text}value(word),200);safeActivate(%eudic%)
+; LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
 LButton+e => eudicQuery({%x})
-LButton+f => findIt({%x})
 LButton+h => open(https://www.hifini.com/search-{%x}.htm)
 LButton+i => gi({%x})
 LButton+m => gmap({%x})
@@ -560,17 +564,6 @@ RAlt@eudic.exe => send(^!+{Space})
 
 SwitchOn+e@chrome.exe => eudicQuery
 
-;SwitchOn+a => edit({%x})
-;SwitchOn+b => open(https://www.baidu.com/s?wd={%x})
-;SwitchOn+d => open(https://www.douban.com/search?q={%x})
-;SwitchOn+g => open(https://www.google.com/search?q={%x})
-;SwitchOn+s => saveNotes
-;SwitchOn+z => open(https://www.zhihu.com/search?type=content&q={%x})
-;SwitchOn+, => open(https://youglish.com/pronounce/{%x}/english?)
-;SwitchOn+. => open(https://youglish.com/pronounce/{%x}/spanish?)
-;SwitchOn+f => findIt({%x})
-;SwitchOn+f@chrome.exe => findit
-
 Tab@Everything.exe => showQuickLook({Tab})
 Tab@explorer.exe => showQuickLook({Tab})
 
@@ -607,6 +600,7 @@ Browser_Home => send(#d)
 ; SwitchOn+LButton+f f => alert(lbtn+f2)
 ; SwitchOn+LButton+f f f => alert(lbtn+f3)
 ; SwitchOn+LButton+f f f f=> alert(lbtn+f4)
+
 ```
 ## 6. 贡献
 - 感谢Esther设计应用图标
@@ -626,13 +620,19 @@ Browser_Home => send(#d)
 - 自动化测试/用例
 - 迁移到Autohotkey2.0
 
-## 20230527: 1.1.7
+## 20230528: 1.1.7
 + 增加 xsend(key, count:=1, lbtn:=false, title := "") 发送xfold快捷键,调用对应功能
 + 优化Cmds定义 @xfold.ini。加载逻辑同Settings，优化加载读取 [Cmds]，未读取到再加载[Cmds-default]
 + 优化Hotstrings定义 @xfold.ini。加载逻辑同Settings，优化加载读取 [Hotstrings]，未读取到再加载[Hotstrings-default]
 + 增加QuickLook窗口激活功能 例： Tab@explorer => showQuickLook({Tab})
 + 增加show(title) 激活显示标题中包含指定文本的窗口，有多个窗口匹配时显示最近打开的窗口
 + 增加xstr(str) 转义相关保留字符, ",",";","@","(",")"
++ 增加xfold-cmd命令行功能，支持以下命令格式
+    * cmd:      g table
+    * cmd pipe: table>g
+    * function: g(table)
++ 整理 xfold-cmd 命令行参考 @xfold-cmd.csv
++ xfold-cmd打包命令行工具 xmd.exe @xfold-cmd.ahk
 * 更新打包应用的icon
 * 补充调整快捷键定义 @keys-leexioua.txt
 * 补充调整Cmds定义 @xfold.ini
