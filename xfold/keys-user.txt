@@ -1,6 +1,14 @@
 ; 配置说明请参考 README.pdf
 ; 示例参考 keys-default.txt
 
-LButton+3 => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
+LButton+2 => map({%x})
+LButton+3 => w3({%x})
+LButton+4 => gmap({%x})
+LButton+5 => term({%x})
 LButton+w => send({raw}{%x},300);send(^!d)
-LButton+w w => open(http://w3.huawei.com/unisearch/contact.html?keyword={%x})
+LButton+x => vo({%x})
+
+LButton+r r => term({%x})
+LButton+v v => vo({%x})
+LButton+w w => w3({%x})
+

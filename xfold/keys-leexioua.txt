@@ -2,7 +2,7 @@
 
 $F1 => xfoldCmdline
 $` => send(#!q)
-$^` => ``send(#!q)
+$^` => send(#!q)
 ^m => safeActivate(%eudic%)
 #!n => safeActivate(%Evernote%)
 ~^!k => safeActivate(%keepass%,0)
@@ -26,10 +26,11 @@ XButton2 => send(^!+=)
 #!F5 => configbak_Backup
 configbak_MonthlyBackup()
 
-$` $` => send(!r)
+; $` $` => send(!r)
 ^e ^e => eudicQuery({%x})
 
 $F1 $F1 => xfoldCmdline
+$F2 $F2 => send(#!c) ;Yzime srf_create
 $F3 $F3 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
 $F4 $F4 => redo
 $F5 $F5 => gtd
@@ -59,22 +60,22 @@ LButton+c => collectNotes
 ; LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
 LButton+e => eudicQuery({%x})
 LButton+h => open(https://www.hifini.com/search-{%x}.htm)
-LButton+i => gi({%x})
-LButton+m => gmap({%x})
+LButton+m => mail({%x})
 LButton+q => evernoteSearch
-LButton+x => locatorSearch({%x})
 LButton+y => open(https://www.youtube.com/results?search_query={%x})
 LButton+[ => escape4Cmd
 
-LButton+$F1 $F1 => open(%A_ScriptDir%\xfold-shortcuts-leexioua.pdf)
+LButton+$F1 $F1 => preview(%A_ScriptDir%\xfold-shortcuts.pdf)
 LButton+$F2 $F2 => open(D:\ProgramxFiles\BeyondCompare4\BCompare.exe)
 LButton+$F4 $F4 => edit(D:\2Assort\#0笔记索引-宇宙起点.md)
 LButton+$F5 $F5 => edit(%A_ScriptDir%\xfold.ahk)
 LButton+$F11 $F11 => adcTaskAdd
 LButton+$F12 $F12 => open(%ProgramxFiles%\AutoHotkey\AutoHotkey.chm)
 ;LButton+$F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs)
+LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
 LButton+2 2 => edit(%A_ScriptDir%\keys-leexioua.txt)
 LButton+3 3 => preview(D:\2Assort\cheatsheet\Capslock+.png)
+LButton+4 4 => preview(%A_ScriptDir%\xfold-cmd-leexioua.csv)
 LButton+5 5 => edit(%A_ScriptDir%\xfold.ini)
 LButton+6 6 => open(https://dida365.com/webapp/)
 LButton+v v => open(https://forvo.com/search/{%x})
@@ -129,6 +130,16 @@ SwitchOn+e@chrome.exe => eudicQuery
 Tab@Everything.exe => showQuickLook({Tab})
 Tab@explorer.exe => showQuickLook({Tab})
 
+
+LButton+Space => send({Enter})
+LButton+LAlt => send({Delete})
+LButton+Tab => send(!{Tab})
+LButton++Tab => send(!+{Tab})
+holdonLBtnWhen(Space)
+holdonLBtnWhen(LAlt)
+holdonLBtnWhen(Tab)
+holdonLBtnWhen(+Tab)
+
 ; 切换查看视图 @explorer.exe
 LButton+1@explorer.exe => send(^!1)
 LButton+2@explorer.exe => send(^!2)
@@ -147,13 +158,8 @@ holdonLBtnWhen(6@explorer.exe)
 holdonLBtnWhen(7@explorer.exe)
 holdonLBtnWhen(8@explorer.exe)
 
-; for G60S remote controller
-Browser_Back => send({Esc})
-Browser_Home => send(#d)
-
-; LButton+ESC ESC ESC ESC@sublime_text.exe => sublimetext_closeAll
-; $F4 $F4 $F4 $F4 => open(autohotkey.exe D:\Links\everything\everything-cmd.ahk ext:md dm:>=202001 path:D:\Workspace|D:\2Assort {%p})
-; $F2 $F2 => clipboard({%x});safeActivate(%eudic%);send(^v,200) ; key for test
+; Browser_Back => send({Esc})
+; Browser_Home => send(#d)
 ; SwitchOn+f => alert(f1)
 ; SwitchOn+f f => alert(f2)
 ; SwitchOn+f f f => alert(f3)
