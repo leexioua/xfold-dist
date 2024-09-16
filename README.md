@@ -91,7 +91,7 @@ xfold 是一个效率提升工具，支持将繁杂操作配置定义为快捷�
 - xfold-shortcuts.pdf
 
 
-## 5. 快捷键功能扩展 （高阶功能·建议普通用户跳过）
+## 5. 快捷键功能扩展 （高阶功能·普通用户建议跳过）
 - 默认快捷键配置文件 keys-default.txt 如果需更改为其它文件名称，可以在 xfold.ini - [Settings] - keymappings项修改
 - 参考已有配置进行修改，映射包括快捷键及功能动作两部分 以 “=>” 分隔
 	+ 如 ^m => SafeActivate(%eudic%) 中
@@ -234,7 +234,8 @@ xfold 是一个效率提升工具，支持将繁杂操作配置定义为快捷�
 |函数|说明|
 | --- | --- |
 alert(str, args*)|弹框提示
-callback(key, cmd, params*)|注册回调函数 @see: recall recallchain delaycb send sendif
+callback(key, cmd, params*)|注册回调函数 @see: recall recalls delaycb send sendif
+clipValue(key)|设置剪贴板内容，取值value(key)
 delay(delay, fn, params*)|延迟调用
 delayif(delay, keyword, fn, params*)|延迟调用 满足特定条件情况时
 delaycb(delay, cb, fn, params*)|延迟调用 调用完执行回调函数
@@ -250,7 +251,7 @@ preview(filename := "")|预览文件 参数为空时，使用当前选择的文�
 process()|获取当前活动窗口的进程名称
 quoted(str)|加双引号
 recall(key)|执行回调函数
-recallchain(keys*)|执行回调函数列表
+recalls(keys*)|执行回调函数列表
 redo()|重做最近的命令行命令
 reload()|重新启动本程序
 rstr(string)|提取行尾可执行字符串
@@ -278,7 +279,6 @@ winrestore()|恢复窗口大小
 winTopToggle()|置顶或取消置顶当前窗口
 winTransparentDown(w := 0)|当前窗口增加透明
 winTransparentUp(w := 0)|当前窗口减弱透明
-xclip(content := "")|设置剪贴板内容
 xedit(filename := "")|文本编辑器打开
 xfoldCmdline(cmd:="")|打开命令行窗口
 xsend(key, count:=1, lbtn:=false, title := "")|发送xfold快捷键,调用对应功能
@@ -390,13 +390,12 @@ open("c:\windows\notepad.exe")
 $` => delay(10,xfoldCmdline)
 F1 F1 => delay(10,xfoldCmdline)
 
-LButton+a => edit({%x})
+LButton+a => xedit({%x})
 LButton+b => baidu({%x})
 LButton+d => douban({%x})
 LButton+e => youdao({%x})
 LButton+g => g({%x})
 LButton+i => gi({%x})
-LButton+j => jd({%x})
 LButton+r => run({%x})
 LButton+s => saveNotes
 LButton+t => copyTitleTextLine
@@ -404,7 +403,6 @@ LButton+v => preview({%x})
 LButton+y => you({%x})
 LButton+z => zh({%x})
 LButton+, => open(https://youglish.com/pronounce/{%x}/english?)
-LButton+. => open(https://youglish.com/pronounce/{%x}/spanish?)
 
 
 LButton+LAlt => send({Backspace})
@@ -419,11 +417,12 @@ holdonLBtnWhen(+Tab)
 LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
 LButton+t t => copyTitleText
 
-LButton+t t t => copyWinTitle
+LButton+t t t => title
 
 LButton+t t t t => title
 LButton+p p p p => process
-LButton+s s s s => edit(%Link_notes%);send(^{end},500)
+LButton+r r r r => run(rstr({%x}))
+LButton+s s s s => xedit(%Link_notes%);send(^{end},500)
 
 
 ; @explorer
@@ -443,9 +442,9 @@ SwitchOn+e@chrome.exe => open(https://youdao.com/result?word={%x}&lang=en)
 ; 配置说明请参考 README.pdf
 ; 示例参考 keys-default.txt
 
-LButton+2 => amap({%x})
+LButton+2 => map({%x})
 LButton+3 => w3({%x})
-LButton+4 => gmap({%x})
+LButton+4 => redo
 LButton+5 => term({%x})
 LButton+6 => hwfy({%x})
 LButton+7 => coa({%x})
@@ -482,6 +481,8 @@ explorer_dialogueJump(~^d)
 ; 个人使用快捷键配置，依赖相关软件工具及脚本 xfold.ini @leexioua
 
 F1 => delay(10,xfoldCmdline)
+F7 => redoHotkey
+
 $` => send(#!q) ;capslock+
 ^$` => send(#!q)
 
@@ -524,16 +525,17 @@ LButton+c => collectNotes
 LButton+e => eudicQuery({%x})
 LButton+f => findit({%x}) ;everything搜索
 LButton+h => song({%x})
+LButton+j => jd({%x})
 LButton+m => mail({%x})
 LButton+n => noteit
 LButton+q => q({%x})
 LButton+v => previewx({%x})
 LButton+y => you({%x})
-LButton+[ => escape4Cmd
 LButton+$` => send({Esc})
 
 LButton+p => send({Home})
 LButton+; => send({End})
+LButton+. => open(https://youglish.com/pronounce/{%x}/spanish?)
 
 LButton+- => send({PgUp})
 LButton+= => send({PgDn})
@@ -571,7 +573,7 @@ LButton+3 3 => cxkeys
 LButton+4 4 => preview(%A_ScriptDir%\xfold-cmd-leexioua.csv)
 LButton+6 6 => open(https://dida365.com/webapp/)
 LButton+b b => bili({%x})
-LButton+n n => tosave
+LButton+r r => delay(100,xfoldCmdlineRun,{%x})
 LButton+v v => open(https://forvo.com/search/{%x})
 
 
@@ -582,8 +584,8 @@ LButton+3 3 3 3 => send(#!{F3})
 LButton+c c c c => edit(%WORKSPACE_HOME%\#notes-list.md);send(^{end},500)
 LButton+d d d d => md({%x})
 LButton+f f f f => finditByEverythingFullPath({%x})
+LButton+n n n n => tosave
 LButton+q q q q => qst({%x})
-LButton+r r r r => run(rstr({%x}))
 LButton+v v v v => send(^c);edit(%temp%\vholder-xfold.txt);send(^{end}{enter}^v, 500)
 LButton+v v v v => send(^c);send(!{tab},200);send(^{end}{enter}^v, 500)
 LButton+w w w w => wx({%x})
@@ -604,8 +606,7 @@ e e@SumatraPDF.exe => eudicQuery
 ^d@sublime_text.exe => send(^+k)
 ^e@sublime_text.exe => send(^p)
 
-;LButton+1@sublime_text.exe => send(!c);delay(100,preview,{%c})
-LButton+1@sublime_text.exe => send(!c);previewx({%c})
+LButton+1@sublime_text.exe => send(!c);delay(100,run,clipboard2cmd,previewx)
 LButton+c c@sublime_text.exe => mdCheckToggle
 
 
@@ -618,7 +619,6 @@ LButton+c c@sublime_text.exe => mdCheckToggle
 
 
 !e@FileLocatorPro.exe => send(!+c);sleep(200);edit({%c})
-LButton+a@FileLocatorPro.exe => send(+!c);edit({%c})
 
 !c@WizTree64.exe => send(^!c)
 
@@ -672,18 +672,20 @@ configbak_MonthlyBackup()
 
 
 ; SwitchOn+ keys
-SwitchOn+e@chrome.exe => eudicQuery
-SwitchOn+e@SumatraPDF.exe => eudicQuery
+SwitchOn+e@chrome.exe => en
+SwitchOn+e@SumatraPDF.exe => en
+SwitchOn+v@explorer.exe => xview({%x})
 
 ; matepad
-SwitchOn++d +d => send(#d)
-SwitchOn+1 1 => xsend(f1)
-SwitchOn+2 2 => xsend(f2)
-SwitchOn+1 1 1 1 => xsend(f1,4)
-SwitchOn+3 3 3 3 => xsend(f3,4)
+; SwitchOn++d +d => send(#d)
+; SwitchOn+1 1 => xsend(f1)
+; SwitchOn+2 2 => xsend(f2)
+; SwitchOn+1 1 1 1 => xsend(f1,4)
+; SwitchOn+3 3 3 3 => xsend(f3,4)
 
 
-fnBackslash_toggleOnOff()
+delay(50,fnBackslash_toggleOnOff)
+;delay(2000,toggleSwitchOn)
 
 
 ; bak config / samples
@@ -751,7 +753,55 @@ fnBackslash_toggleOnOff()
 ;Tab Tab => send(!{Tab})
 
 ```
-## 6. 贡献
+
+## 6. 命令行功能扩展 （高阶功能·普通用户建议跳过）
+- 软件预置提供了部分命令行，例如 <code>g</code>  <code>cmds</code>  <code>keys</code> 等
+- 预置的命令行在 xfold.ini 配置文件中定义，参考 <code>[Cmds-default]</code> <code>[Cmds]</code> <code>[Cmds-alias]</code>
+- 如果有重名定义， 优先级依次 <code>[Cmds]</code> > <code>[Cmds-default]</code> > <code>[Cmds-alias]</code>
+### 6.1 配置文件命名规范
+- 默认使用 <code>xfold.ini</code> 扩展配置项即可
+- 如果需要模块拆分方便维护，可以按照 <code>xfold-*.ini</code> 规范命名
+- 多个配置文件时加载顺序按 文件名倒序加载，已有的配置项目不做覆盖更新，按照此约定 <code>xfold.ini</code> 中的配置项优先级最级。
+### 6.2 命令行配置
+- 命令行配置包含名称和命令行两部分
+- 名称要求为字符和数字加连字符，例如 <code>noteit</code> <code>w3</code> <code>gtd-inbox</code>
+- 命令行参考 <code>5.2 功能动作定义</code>
+	- 支持命令行的写法 <code>g({%p})</code> 与 <code>g {%p}</code> 等同
+	- 支持包含多条命令 以<code>;</code>分隔 例如：<code>b({%p});g({%p})</code>
+- 示例：
+	- <code>baidu=https://www.baidu.com/s?wd={%p}</code>
+	- <code>bg=b({%p});g({%p})</code>
+- <code>[Cmds-default]</code> 建议默认常用命令行在这里定义。
+- <code>[Cmds]</code>  建议自定义扩展命令行在这里定义。
+- <code>[Cmds-alias]</code> 命令行可以设置别名，建议在这里定义。
+### 6.3 命令行使用
+- **命令行窗口** 
+	- 默认使用 <code>`</code> 或 <code>F1 F1</code> 打开命令行输入框，输入命令行回车即可执行命令
+	```js
+	; defined in keys-default.text
+	$` => delay(10,xfoldCmdline)
+	F1 F1 => delay(10,xfoldCmdline)
+	```
+	- 命令行中的参数输入，按以下输入格式都可以执行
+	- <code>g table</code>
+	- <code>table.g</code>
+	- <code>table>g</code>
+
+- **快捷键** LButton+r 选择的文本作为命令行执行
+	```js
+	; defined in keys-default.text
+	LButton+r => run({%x})
+	```
+	
+- **魔法字符串** <code>..r</code> 任意输入框输入命令行，最后连续追加<code>..r</code>
+	- g table..r
+	```js
+	; defined in xfold.ini
+	:*?xo:..r=zmd:send(+{home}^c{end});delay(100, xfoldCmdlineRun, {%cx})
+	```
+
+
+## 7. 贡献
 - 感谢Esther设计应用图标
 
 
@@ -759,21 +809,39 @@ fnBackslash_toggleOnOff()
 ## 遗留优化 TODO
 - 增加定义快捷键查找功能 @xfold-shortcuts.xlsx
 - 与CapsLocks+冲突问题，如 CapsLock+F1
-- 解析热键定义中的保留字符使用 ; , 例： LButton+3 => copy;info("done;") 例： LButton+w => value(hwid, {%x});open(notepad);send(value(hwid), 1000) 当hwid中包含保留字符,时 - vsetarr
-- 增加组合键扩展 LButton+a e / Ctrl+k,Ctrl+d - 思路 hotstring-zmdx
+- 解析热键定义中的保留字符使用 ; , - 通过anltr词法解析
+- 增加组合键扩展 LButton+a e / Ctrl+k,Ctrl+d - 思路 hotstring-zmd，并击
 - 增加代码注释自动生成文档 类似jsdoc AHKDoc
 - 自动化测试/用例
 - 打包后支持自定义脚本扩展功能 LexAHKL.dll
 - 迁移到Autohotkey2.0
+- funcCmd与open区分使用，funcCmd 标准函数方式，open在funcCmd扩展支持命令行及路径
+- 插件 cmd+hotkey+hotstirngs
+- 整理xfold-base.ahk 函数有些乱
+- 项目工程重新构建
 
 ## @issue
 - xfold.ini 需要保存文件编码 UTF-16 LE with BOM
 - xfoldCmdlineRun中以.md类似结尾误解析为命令动作，例如 f xfold设计思想.md - 暂命令在最后添加空格规避
-- 使用虚拟键盘输入 设置了快捷键的字符无法输入
+- 使用虚拟键盘输入 设置了快捷键的字符无法输入 - 原因：虚拟键盘输入时LButton为按击状态 LButton+f。 getLBtnState - 通过开关规避解决 toggleVLBtnEnabled
+- ; , 为保留字符，命令行中参数包含时存在错误解析 
+
+
+## 20240916: 1.2.2
++ 新增重做上次执键功能 redoHotkey()
++ 新增打开应用或文件时显示已打开 ashow() - "assure-show"
++ 新增执行批量命令 runs/runcmds
+* bugfix d:\not-exist-file.txt
+* 解决编译exe无法运行问题
+* 修改默认日志级别: error
+* 清理硬编码的hotstings - spanish-accents
+* xfold-cmd cmd增加连字符的支持 gtd-in
+* 修改增强使用run命令行执行对应动作 for xmd.exe keys-\*.txt
+* 整理配置文件
 
 
 ## 20240818: 1.2.1
-+ 增加支持多配置文件，默认：xfold.ini, 扩展配置命名：xfold-*.ini 加载顺序按名称倒序
++ 增加支持多配置文件，默认：xfold.ini, 扩展配置命名：xfold-\*.ini 加载顺序按名称倒序
 * 整理代码并修复部分问题
 
 
