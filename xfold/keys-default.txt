@@ -2,58 +2,59 @@
 ; 变量常量配置参考配置文件 xfold.ini
 ; 同一快捷键如果被定义多次，只使用最后一次定义，不会触发多个动作，即覆盖更新原则
 ; 修改配置后，需要重启xfold生效
+
 ^!r => reload ; 默认重启快捷键为：Ctrl+Alt+R，可根据习惯修改为其它快捷键
 
-$` => xfoldCmdline
-$F1 => xfoldCmdline
-$F1 $F1 => xfoldCmdline
+;^1 => alert(ctrl 1)
+;^1 ^1 => alert(ctrl 11)
+;^1 ^1 ^1 => alert(ctrl 111)
+;^1 ^1 ^1 ^1 => alert(ctrl 1111)
 
-; LButton+f => clipboard({%x});open(shell:MyComputerFolder);send({F3},500);send(^v,1000) ;资源管理器默认搜索
-LButton+$F10 => toggleSwitchOn
-LButton+a => edit({%x})
-LButton+b => open(https://www.baidu.com/s?wd={%x})
-LButton+d => open(https://www.douban.com/search?q={%x})
-LButton+e => open(https://youdao.com/result?word={%x}&lang=en)
-LButton+f => findIt({%x}) ;everything搜索
-LButton+g => open(https://www.google.com/search?q={%x})
+$` => delay(10,xfoldCmdline)
+F1 F1 => delay(10,xfoldCmdline)
+
+LButton+a => xedit({%x})
+LButton+b => baidu({%x})
+LButton+d => douban({%x})
+LButton+e => youdao({%x})
+LButton+g => g({%x})
 LButton+i => gi({%x})
 LButton+r => run({%x})
 LButton+s => saveNotes
 LButton+t => copyTitleTextLine
 LButton+v => preview({%x})
-LButton+y => open(https://www.youtube.com/results?search_query={%x})
-LButton+z => open(https://www.zhihu.com/search?type=content&q={%x})
+LButton+y => you({%x})
+LButton+z => zh({%x})
 LButton+, => open(https://youglish.com/pronounce/{%x}/english?)
-LButton+. => open(https://youglish.com/pronounce/{%x}/spanish?)
 
-LButton+$F1 $F1 => open(%A_ScriptDir%\xfold-shortcuts-default.pdf)
+
+LButton+LAlt => send({Backspace})
+LButton+Space => send({Enter})
+LButton+Tab => send(!{Tab})
+LButton++Tab => send(!+{Tab})
+holdonLBtnWhen(LAlt)
+holdonLBtnWhen(Space)
+holdonLBtnWhen(Tab)
+holdonLBtnWhen(+Tab)
+
 LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
 LButton+t t => copyTitleText
 
-LButton+t t t => copyWinTitle
+LButton+t t t => title
 
-LButton+f f f f => finditByEverythingFullPath({%x})
 LButton+t t t t => title
 LButton+p p p p => process
-LButton+s s s s => edit(%Link_notes%);send(^{end},500)
+LButton+r r r r => run(rstr({%x}))
+LButton+s s s s => xedit(%Link_notes%);send(^{end},500)
 
 
+; @explorer
+!c@explorer.exe => getCopyText
+!e@explorer.exe => xedit
+LButton+^v@explorer.exe => explorer_clipboardSave2Txt
+
+
+; SwitchOn+ key definition
+; ^!] => toggleSwitchOn
 ^!\ => toggleSwitchOn
 SwitchOn+e@chrome.exe => open(https://youdao.com/result?word={%x}&lang=en)
-
-
-; 以下为其它扩展功能，如不需要，行首分号 (;) 注释即可
-LButton+^c => stripCopy
-LButton+$F12 => winTopToggle
-
-#= => winTransparentUp
-#- => winTransparentDown
-^q ^q => send(!{F4})
-^+v => plainPaste
-
-; explorer plugin
-!c@explorer.exe => getCopyText
-!e@explorer.exe => edit
-LButton+^v@explorer.exe => explorer_clipboardSave2Txt
-explorer_dialogueJump(~^q) ;文件对话框跳转到当前资源管理器活动的目录 Ctrl+Q 可根据需要修改 如Ctrl+D
-

@@ -1,0 +1,46 @@
+Windows Registry Editor Version 5.00
+
+; xfold protocol
+[-HKEY_CLASSES_ROOT\xfold]
+
+[HKEY_CLASSES_ROOT\xfold]
+@="URL:xfold Protocol"
+"URL Protocol"="D:\\Links\\xmd.exe"
+
+[HKEY_CLASSES_ROOT\xfold\DefaultIcon]
+@="D:\\Links\\xmd.exe"
+
+[HKEY_CLASSES_ROOT\xfold\shell]
+@="open"
+
+[HKEY_CLASSES_ROOT\xfold\shell\open]
+@="open"
+
+[HKEY_CLASSES_ROOT\xfold\shell\open\command]
+@="\"D:\\Links\\xmd.exe\" \"%1\""
+;@="cmd /v:on /k set m=%1 &&call set n=%%m:xfold:=%%&\"D:\\Links\\xmd.exe\" \"alert !n!\"&&exit"
+
+
+; xmd protocol
+[-HKEY_CLASSES_ROOT\xmd]
+
+[HKEY_CLASSES_ROOT\xmd]
+@="URL:xfold Protocol"
+"URL Protocol"="D:\\Links\\xmd.exe"
+
+[HKEY_CLASSES_ROOT\xmd\DefaultIcon]
+@="D:\\Links\\xmd.exe"
+
+[HKEY_CLASSES_ROOT\xmd\shell]
+@="open"
+
+[HKEY_CLASSES_ROOT\xmd\shell\open]
+@="open"
+
+[HKEY_CLASSES_ROOT\xmd\shell\open\command]
+@="\"D:\\Links\\xmd.exe\" \"%1\""
+
+
+; excel-domain-href-no-warning
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Security]
+"DisableHyperlinkWarning"=dword:00000001

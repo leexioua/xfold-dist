@@ -1,0 +1,46 @@
+﻿命令,别名,功能说明,命令行,参数
+alert,echo,弹窗提示,内置动作 弹窗消息,消息内容
+amap,,高德地图搜索,https://ditu.amap.com/search?query={%p},搜索关键词
+baidu,b,百度搜索,https://www.baidu.com/s?wd={%p},搜索关键词
+bg,,百度谷歌搜索,b({%p});g({%p}),搜索关键词
+bili,,B站搜索,https://search.bilibili.com/all?keyword={%p},搜索关键词
+bmap,map,百度地图搜索,https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D{%p},搜索关键词
+book,,书籍搜索,https://search.douban.com/book/subject_search?search_text={%p},搜索关键词
+cfg,set,xfold.ini配置,edit(%A_ScriptDir%\xfold.ini),无
+cmds,,xfold命令行参考,"preview(%A_ScriptDir%\xfold-cmd.csv);delay(500,winmax)",无
+cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\xfold-cmd-default.csv);delay(500,winmax)",无
+debug,,切换调试模式,loglevel(debug),无
+deepl,"fanyi,fy,translate",DEEPL翻译,https://www.deepl.com/translator#en/zh/{%p},搜索关键词
+douban,"d,db",豆瓣搜索,https://www.douban.com/search?q={%p},搜索关键词
+find,,搜索文件,"find=findIt({%p},0)",文件名搜索关键词
+findit,"f,file",搜索文件,内置动作 Everything文件搜索，截取文件名,文件名搜索关键词
+forvo,vo,Forvo发音搜索,https://forvo.com/search/{%p},搜索关键词
+ft,,搜索窗口标题文件,"value(keyword,title());delay(100,find(value(keyword)))",无
+g,,谷歌搜索,https://www.google.com/search?q={%p},搜索关键词
+gb,,谷歌百度搜索,g({%p});b({%p}),搜索关键词
+gi,,谷歌图片搜索,https://www.google.com/search?q={%p}&tbm=isch,搜索关键词
+github,gh,Github搜索,https://github.com/search?q={%p},搜索关键词
+gmap,,谷歌地图搜索,https://maps.google.com/maps?q={%p}&um=1,搜索关键词
+h,help,xfold帮助文档,open(%A_ScriptDir%\README.pdf);open(%A_ScriptDir%\xfold-shortcuts.pdf),无
+info,,Tooltip提示信息,内置动作 Tooltip提示,提示内容
+keys,,打开快捷键定义文件,edit(%A_ScriptDir%\keys-default.txt);edit(%A_ScriptDir%\keys-user.txt),无
+movie,,电影搜索,https://search.douban.com/movie/subject_search?search_text={%p}&cat=1002,搜索关键词
+nothing,n,空任务 不执行任何动作,内置动作 不作任何动作,任意
+open,"o,r,run",打开文件/网址/程序/xfold-cmd等,内置动作 打开运行,文件名/网址/注册表路径/xfold-cmd
+openx,s,执行命令行，将选择的文本作为参数输入,"open({p},{x})",命令行
+preview,,文件预览,内置动作 文件预览,完整文件路径
+process,p,获取应用进程名称,内置动作 复制当前应用进程名称,无
+show,,显示窗口,内置动作 显示窗口,窗口标题包含的文本
+title,t,获取窗口名称,内置动作 复制当前窗口标题,无
+top,,窗口置顶,内置动作 窗口置顶切换,无
+vgo,v,执行命令行 @%temp%/xfold.values.ini,"open(vget({%p},"""",vgo))",vgo命令
+wiki,,维基百科搜索,https://en.wikipedia.org/wiki/{%p},搜索关键词
+winmax,max,窗口最大化,内置动作 窗口最大化,无
+winmin,min,窗口最小化,内置动作 窗口最小化,无
+winrestore,restore,窗口恢复大小,内置动作 恢复窗口大小,无
+wx,,搜狗微信搜索,https://weixin.sogou.com/weixin?type=2&query={%p},搜索关键词
+xedit,"a,edit",文本编辑打开,内置动作 文本编辑器打开,完整文件路径
+ygen,,Youglish英语搜索,https://youglish.com/pronounce/{%p}/english?,搜索关键词
+youdao,"e,en",有道英语搜索,https://youdao.com/result?lang=en&word={%p},搜索关键词
+youtube,"y,you",Youtube搜索,https://www.youtube.com/results?search_query={%p},搜索关键词
+zhihu,"z,zh",知乎搜索,https://www.zhihu.com/search?type=content&q={%p},搜索关键词

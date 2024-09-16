@@ -1,102 +1,134 @@
 ; 个人使用快捷键配置，依赖相关软件工具及脚本 xfold.ini @leexioua
 
-$F1 => xfoldCmdline
-$` => send(#!q)
-$^` => send(#!q)
+F1 => delay(10,xfoldCmdline)
+F7 => redoHotkey
+
+$` => send(#!q) ;capslock+
+^$` => send(#!q)
+
 ^m => safeActivate(%eudic%)
+
 #!n => safeActivate(%Evernote%)
 ~^!k => safeActivate(%keepass%,0)
 #^!+f => safeActivate(%OUTLOOK%) ;mail-cmd.ahk中使用
-#` => restartAltRun
-#q => restartQuickLook
 
-^RButton => clipboard({%x});send(^!+x,200)
+$` $` => send({esc})
+$` $` => xfoldCmdline
 
-Tab@explorer.exe => showQuickLook({Tab})
-
-; potplayer plugin
-XButton1 => send(^!+{Space})
-^XButton1 => send(^!+{PgDn})
-^XButton2 => send(^!+{PgUp})
-
-+XButton2 => send(^!+-)
-XButton2 => send(^!+=)
-
-; configback plugin
-#!F5 => configbak_Backup
-configbak_MonthlyBackup()
-
-; $` $` => send(!r)
 ^e ^e => eudicQuery({%x})
 
-$F1 $F1 => xfoldCmdline
-$F2 $F2 => send(#!c) ;Yzime srf_create
-$F3 $F3 => open(autohotkey.exe D:\Links\filelocator\locator-cmd.ahk {%p})
-$F4 $F4 => redo
-$F5 $F5 => gtd
-$F7 $F7 => open(%Cmd_EvernoteCmds%)
-$F8 $F8 => open(%Cmd_EverythingCmds%)
-$F9 $F9 => open(%Cmd_MailCmd% {%p})
-$F12 $F12 => alertLastCmd
-
-$F1 $F1 $F1 => toAltRun_xfoldCmd
-$F7 $F7 $F7 => toAltRun_evernoteTerms
-$F8 $F8 $F8 => toAltRun_everythingTerms
-$F9 $F9 $F9 => toAltRun_mailCmd
-;$F2 $F2 $F2 => toAltRun_ahkCmd
-
-$F1 $F1 $F1 $F1 => send(#!{F1})
-$F2 $F2 $F2 $F2 => markdown_clipboardImageURI
-$F3 $F3 $F3 $F3 => send(#!{F3})
-$F4 $F4 $F4 $F4 => gtd
-$F10 $F10 $F10 $F10 => getAccInfo
+^/ ^/ => setLBtnOn(3000)
+^\ ^\ => toggleLBtnOn()
+LButton+^\ ^\ => toggleLBtnOn()
 
 
+F1 F1 => vselect;delay(10,xfoldCmdline);delaycb(500,vpaste,sendif,xfold-cmd)
+F2 F2 => send(#!c) ;Yzime srf_create
+F3 F3 => alist
+F4 F4 => redo
+F5 F5 => qlk;delay(200,max)
+F6 F6 => qindex
+F8 F8 => mail
+F9 F9 => run({%x})
+F12 F12 => setLBtnOn(3000)
+
+;$` $` $` $` => xfoldCmdline
+$` $` $` $` => send({Esc})
+
+F1 F1 F1 F1 => send(#!{F1})
+F3 F3 F3 F3 => send(#!{F3})
+F10 F10 F10 F10 => getAccInfo
 
 LButton+^c => stripCopy
 
-LButton+$F10 => toggleSwitchOn
 LButton+c => collectNotes
-; LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
 LButton+e => eudicQuery({%x})
-LButton+h => open(https://www.hifini.com/search-{%x}.htm)
+LButton+f => findit({%x}) ;everything搜索
+LButton+h => song({%x})
+LButton+j => jd({%x})
 LButton+m => mail({%x})
-LButton+q => evernoteSearch
-LButton+y => open(https://www.youtube.com/results?search_query={%x})
-LButton+[ => escape4Cmd
+LButton+n => noteit
+LButton+q => q({%x})
+LButton+v => previewx({%x})
+LButton+y => you({%x})
+LButton+$` => send({Esc})
 
-LButton+$F1 $F1 => preview(%A_ScriptDir%\xfold-shortcuts.pdf)
-LButton+$F2 $F2 => open(D:\ProgramxFiles\BeyondCompare4\BCompare.exe)
-LButton+$F4 $F4 => edit(D:\2Assort\#0笔记索引-宇宙起点.md)
-LButton+$F5 $F5 => edit(%A_ScriptDir%\xfold.ahk)
-LButton+$F11 $F11 => adcTaskAdd
-LButton+$F12 $F12 => open(%ProgramxFiles%\AutoHotkey\AutoHotkey.chm)
-;LButton+$F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs)
-LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
-LButton+2 2 => edit(%A_ScriptDir%\keys-leexioua.txt)
-LButton+3 3 => preview(D:\2Assort\cheatsheet\Capslock+.png)
+LButton+p => send({Home})
+LButton+; => send({End})
+LButton+. => open(https://youglish.com/pronounce/{%x}/spanish?)
+
+LButton+- => send({PgUp})
+LButton+= => send({PgDn})
+holdonLBtnWhen(-)
+holdonLBtnWhen(=)
+
+LButton+Left => send({WheelLeft 2})
+LButton+Right => send({WheelRight 2})
+LButton+Up => send({WheelUp 2})
+LButton+Down => send({WheelDown 2})
+LButton+Left Left => send({WheelLeft 4})
+LButton+Right Right => send({WheelRight 4})
+LButton+Up Up => send({WheelUp 4})
+LButton+Down Down => send({WheelDown 4})
+LButton+Left Left Left => send({WheelLeft 6})
+LButton+Right Right Right => send({WheelRight 6})
+LButton+Up Up Up => send({WheelUp 6})
+LButton+Down Down Down => send({WheelDown 6})
+LButton+Left Left Left Left => send({WheelLeft 8})
+LButton+Right Right Right Right => send({WheelRight 8})
+LButton+Up Up Up Up => send({WheelUp 8})
+LButton+Down Down Down Down => send({WheelDown 8})
+holdonLBtnWhen(Left)
+holdonLBtnWhen(Right)
+holdonLBtnWhen(Up)
+holdonLBtnWhen(Down)
+
+
+LButton+F2 F2 => open(D:\ProgramxFiles\BeyondCompare4\BCompare.exe)
+LButton+F4 F4 => ihome
+LButton+F11 F11 => adcTaskAdd
+LButton+F12 F12 => ahkhelp
+
+LButton+3 3 => cxkeys
 LButton+4 4 => preview(%A_ScriptDir%\xfold-cmd-leexioua.csv)
-LButton+5 5 => edit(%A_ScriptDir%\xfold.ini)
 LButton+6 6 => open(https://dida365.com/webapp/)
+LButton+b b => bili({%x})
+LButton+r r => delay(100,xfoldCmdlineRun,{%x})
 LButton+v v => open(https://forvo.com/search/{%x})
 
-LButton+$F10 $F10 $F10 $F10 => getAccAllText
-LButton+f f f f => finditByEverythingFullPath({%x})
-LButton+r r r r => run({%p})
+
+LButton+F10 F10 F10 F10 => getAccAllText
+
+LButton+1 1 1 1 => send(#!{F1})
+LButton+3 3 3 3 => send(#!{F3})
 LButton+c c c c => edit(%WORKSPACE_HOME%\#notes-list.md);send(^{end},500)
+LButton+d d d d => md({%x})
+LButton+f f f f => finditByEverythingFullPath({%x})
+LButton+n n n n => tosave
+LButton+q q q q => qst({%x})
 LButton+v v v v => send(^c);edit(%temp%\vholder-xfold.txt);send(^{end}{enter}^v, 500)
+LButton+v v v v => send(^c);send(!{tab},200);send(^{end}{enter}^v, 500)
+LButton+w w w w => wx({%x})
+LButton+x x x x => x {%x}
+
+
++Enter@Everything.exe => evcmd
+;^Enter@Everything.exe => evcmd
+
 
 /@SumatraPDF.exe => open(%Help_SumatraPDF%)
+6 6@SumatraPDF.exe => send(^6)
+7 7@SumatraPDF.exe => send(^7)
+8 8@SumatraPDF.exe => send(^8)
+e e@SumatraPDF.exe => eudicQuery
 
-^2@sublime_text.exe => send(^p);send({U+0040},200) ; U+0040 => @
+^2@sublime_text.exe => send(^r)
 ^d@sublime_text.exe => send(^+k)
 ^e@sublime_text.exe => send(^p)
-!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
-LButton+1@sublime_text.exe => send(!c);preview({%c})
-LButton+8@sublime_text.exe => sublimetext_convertToUTF8
-LButton+m m@sublime_text.exe => sublimetext_markdownSyntax
-LButton+x x@sublime_text.exe => mdCheckToggle
-LButton+a a a a@sublime_text.exe => viewAhkFile({%x})
+
+LButton+1@sublime_text.exe => send(!c);delay(100,run,clipboard2cmd,previewx)
+LButton+c c@sublime_text.exe => mdCheckToggle
+
 
 !Up@ADC.exe => adc_execute(Move Task Up)
 !Down@ADC.exe => adc_execute(Move Task Down)
@@ -105,40 +137,28 @@ LButton+a a a a@sublime_text.exe => viewAhkFile({%x})
 !Left@ADC.exe => adc_execute(Move Task Top)
 !Right@ADC.exe => adc_execute(Move Task Bottom)
 
-^+c@excel.exe => excel_BrushStart
 
 !e@FileLocatorPro.exe => send(!+c);sleep(200);edit({%c})
-LButton+a@FileLocatorPro.exe => send(+!c);edit({%c})
 
 !c@WizTree64.exe => send(^!c)
-e@SumatraPDF.exe => eudicQuery
-e@Koodo.exe => eudicQuery
+
 -@QuickLook.exe => send(^{WheelDown 2})
 =@QuickLook.exe => send(^{WheelUp 2})
 
-Tab@eudic.exe => send(!{tab})
-Tab@SumatraPDF.exe => send(!{tab})
-Tab@Koodo.exe => send(!{tab})
--@eudic.exe => send(^!+-)	
+Tab@eudic.exe => send(!{Tab})
+-@eudic.exe => send(^!+-)
 =@eudic.exe => send(^!+=)
-\@eudic.exe => send(^!+\)
 RAlt@eudic.exe => send(^!+{Space})
+LButton+e@eudic.exe => send(^ca);send({Backspace}^v{enter},300)
+
 ^q@cmd.exe => send(!{F4})
 
-SwitchOn+e@chrome.exe => eudicQuery
+e e@Koodo.exe => eudicQuery
 
 Tab@Everything.exe => showQuickLook({Tab})
-Tab@explorer.exe => showQuickLook({Tab})
 
 
-LButton+Space => send({Enter})
-LButton+LAlt => send({Delete})
-LButton+Tab => send(!{Tab})
-LButton++Tab => send(!+{Tab})
-holdonLBtnWhen(Space)
-holdonLBtnWhen(LAlt)
-holdonLBtnWhen(Tab)
-holdonLBtnWhen(+Tab)
++Esc@explorer.exe => send(+=)
 
 ; 切换查看视图 @explorer.exe
 LButton+1@explorer.exe => send(^!1)
@@ -157,14 +177,97 @@ holdonLBtnWhen(5@explorer.exe)
 holdonLBtnWhen(6@explorer.exe)
 holdonLBtnWhen(7@explorer.exe)
 holdonLBtnWhen(8@explorer.exe)
+Tab@explorer.exe => showQuickLook({Tab})
 
-; Browser_Back => send({Esc})
-; Browser_Home => send(#d)
-; SwitchOn+f => alert(f1)
-; SwitchOn+f f => alert(f2)
-; SwitchOn+f f f => alert(f3)
-; SwitchOn+f f f f => alert(f4)
-; SwitchOn+LButton+f => alert(lbtn+f1)
-; SwitchOn+LButton+f f => alert(lbtn+f2)
-; SwitchOn+LButton+f f f => alert(lbtn+f3)
-; SwitchOn+LButton+f f f f=> alert(lbtn+f4)
+; potplayer plugin
+XButton1 => send(^!+{Space})
+^XButton1 => send(^!+{PgDn})
+^XButton2 => send(^!+{PgUp})
++XButton2 => send(^!+-)
+XButton2 => send(^!+=)
+
+; configback plugin
+#!F5 => configbak_Backup
+configbak_MonthlyBackup()
+
+
+; SwitchOn+ keys
+SwitchOn+e@chrome.exe => en
+SwitchOn+e@SumatraPDF.exe => en
+SwitchOn+v@explorer.exe => xview({%x})
+
+; matepad
+; SwitchOn++d +d => send(#d)
+; SwitchOn+1 1 => xsend(f1)
+; SwitchOn+2 2 => xsend(f2)
+; SwitchOn+1 1 1 1 => xsend(f1,4)
+; SwitchOn+3 3 3 3 => xsend(f3,4)
+
+
+delay(50,fnBackslash_toggleOnOff)
+;delay(2000,toggleSwitchOn)
+
+
+; bak config / samples
+; \@eudic.exe => send(^!+\)
+; ^[ ^[ => setLBtnOn(3000)
+; ^] ^] => toggleLBtnOn()
+; LButton+^] ^] => toggleLBtnOn()
+;!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
+;#` => restartAltRun
+;#q => restartQuickLook
+;$!Tab => send(!{Tab})
+;$^Tab => send(^{Tab})
+;$` $` $` $`=> showQuickLook
+;$` $` => send(!r)
+;$` $` => showQuickLook;send({Esc})
+;$F1 $F1 $F1 => toAltRun_xfoldCmd
+;$F12 $F12 => alertLastCmd
+;$F2 $F2 $F2 $F2 => markdown_clipboardImageURI
+;$F2 $F2 $F2 => toAltRun_ahkCmd
+;$F4 $F4 $F4 $F4 => gtd
+;$F4 $F4 => redo
+;$F7 $F7 $F7 => toAltRun_evernoteTerms
+;$F8 $F8 $F8 => toAltRun_everythingTerms
+;$F9 $F9 $F9 => toAltRun_mailCmd
+;^+c@excel.exe => excel_BrushStart
+;^2@sublime_text.exe => send(^p);send({U+0040},200) ; U+0040 => @
+;^m ^m => en({%p})
+;^RButton => clipboard({%x});send(^!+x,200)
+;Browser_Back => send({Esc})
+;Browser_Home => send(#d)
+;F1 F1 => xfoldCmdline
+;F1 F1 => delay(10,xfoldCmdline,{%x});delay(500,sendif,xfold-cmd,{end})
+;F3 F3 => x({%p})
+;LButton+$F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs/index.htm)
+;LButton+$F5 $F5 => edit(%A_ScriptDir%\xfold.ahk)
+;LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
+;LButton+2 2 => edit(%A_ScriptDir%\keys-leexioua.txt)
+;LButton+5 5 => edit(%A_ScriptDir%\xfold.ini)
+;LButton+8@sublime_text.exe => sublimetext_convertToUTF8
+;LButton+a a a a@sublime_text.exe => viewAhkFile({%x})
+;LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
+;LButton+Left => send({PgUp})
+;LButton+m m@sublime_text.exe => sublimetext_markdownSyntax
+;LButton+q => evernoteSearch
+;LButton+r r r r => run({%p})
+;LButton+Right => send({PgDn})
+;LButton+x x x x@sublime_text.exe => mdCheckToggle
+;SwitchOn++,@PotPlayerMini64.exe => send(x)
+;SwitchOn++.@PotPlayerMini64.exe => send(c)
+;SwitchOn++/@PotPlayerMini64.exe => send(z)
+;SwitchOn++n@PotPlayerMini64.exe => send(^!+{PgDn})
+;SwitchOn++p@PotPlayerMini64.exe => send(^!+{PgUp})
+;SwitchOn+f => alert(f1)
+;SwitchOn+f f => alert(f2)
+;SwitchOn+f f f => alert(f3)
+;SwitchOn+f f f f => alert(f4)
+;SwitchOn+f@PotPlayerMini64.exe => send({Enter})
+;SwitchOn+j@PotPlayerMini64.exe => send({Left 2})
+;SwitchOn+k@PotPlayerMini64.exe => send({Space})
+;SwitchOn+l@PotPlayerMini64.exe => send({Right 2})
+;SwitchOn+LButton+f => alert(lbtn+f1)
+;SwitchOn+LButton+f f => alert(lbtn+f2)
+;SwitchOn+LButton+f f f => alert(lbtn+f3)
+;SwitchOn+LButton+f f f f=> alert(lbtn+f4)
+;Tab Tab => send(!{Tab})

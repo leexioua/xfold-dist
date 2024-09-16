@@ -1,0 +1,102 @@
+﻿命令,别名,功能说明,命令行,参数
+activateChromeTab,chrometab,激活chrome页签,内置动作 激活chrome页签,标题关键词
+ahkhelp,,AHK中文帮助,open(%A_AhkPath%\..\AutoHotkey-cn.chm),无
+alist,,alist笔记,open(D:\Links\gtd-cmd-v2.bat alist -hidden),无
+amap,map,高德地图搜索,https://ditu.amap.com/search?query={%p},搜索关键词
+amapn,,高德地图搜索-南京,https://ditu.amap.com/search?query=南京%20{%p},搜索关键词
+annotation,an,搜索带标记的笔记,xx gtd @*:,无
+baike,bk,百度百科搜索,https://baike.baidu.com/search?word={%p},搜索关键词
+base64,,base64编码,内置函数 base64编码,字符串
+base64decode,,base64解码,内置函数 base64解码,字符串
+bay,,海盗湾搜索,https://thehiddenbay.com/search/{%p},搜索关键词
+bfn,,切换\作为LButton替换键,fnBackslash_toggleOnOff,无
+bks,,书籍本地搜索,find path:D:\2Books|D:\downloads|Z:\aria2 {%p},搜索关键词
+bmapn,,百度地图搜索-南京,https://map.baidu.com/?newmap=1&ie=utf-8&s=s&wd=南京%20{%p},搜索关键词
+cmds,,xfold命令行参考,"preview(%A_ScriptDir%\xfold-cmd.csv);delay(300,showQuickLook);delay(500,winmax)",无
+cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\xfold-cmd-default.csv);delay(300,showQuickLook);delay(500,winmax)",无
+cmdsl,,xfold命令行参考-leexioua,"preview(%A_ScriptDir%\xfold-cmd-leexioua.csv);delay(300,showQuickLook);delay(500,winmax)",无
+cmdsw,,xfold命令行参考-work,"preview(%A_ScriptDir%\xfold-cmd-work.csv);delay(300,showQuickLook);delay(500,winmax)",无
+copytrans,,复制到sublimetext,"copyTitleText;delaycb(50,cbcopytrans,show,exe:sublime);callback(cbcopytrans,delayif,600,exe:sublime,send,^{end}{enter}{home}```js{enter}^v{enter}{home}```{enter})",无
+cxkeys,,Capslock+按键帮助,"preview(D:\2Assort\cheatsheet\Capslock+.png);delay(500,showQuickLook)",无
+dida365,,滴答清单,https://dida365.com/webapp,无
+diff,,搜索词语辨析-en,g difference between {%p},搜索关键词
+diffz,,搜索词语辨析-zh,g {%p}的区别,搜索关键词
+dls,downloads,打开下载目录,D:\Downloads,无
+esc,,Escape键,"send({esc},100)",无
+eudicQuery,"e,en,eu,eudicQ",欧路查词,内置动作 欧路词典英语查词,搜索关键词
+gtd,md,gtd笔记搜索,"finditByEverything(""ext:md dm:>=202001 path:D:\Onebox\Workspace|D:\2Assort {%p}"",0)",搜索关键词
+gtd-clue,gtd-aclue,gtd笔记-clue,"D:\Links\gtd-cmd-v2.bat clue ""{%p}""",文件名
+gtd-dida,,gtd笔记-dida,"D:\Links\gtd-cmd-v2.bat dida ""{%p}""",文件名
+gtd-future,,gtd笔记-future,"D:\Links\gtd-cmd-v2.bat future ""{%p}""",文件名
+gtd-idea,,gtd笔记-idea,"D:\Links\gtd-cmd-v2.bat idea ""{%p}""",文件名
+gtd-inbox,gtd-in,gtd笔记-inbox,"D:\Links\gtd-cmd-v2.bat inbox ""{%p}""",文件名
+gtd-index,,gtd笔记-index,"D:\Links\gtd-cmd-v2.bat index ""{%p}""",文件名
+gtd-mom,,gtd笔记-mom,"D:\Links\gtd-cmd-v2.bat mom ""{%p}""",文件名
+gtd-next,,gtd笔记-next,"D:\Links\gtd-cmd-v2.bat next ""{%p}""",文件名
+gtd-ongoing,gtd-now,gtd笔记-now,"D:\Links\gtd-cmd-v2.bat now ""{%p}""",文件名
+gtd-project,gtd-projects,gtd笔记-project,"D:\Links\gtd-cmd-v2.bat project ""{%p}""",文件名
+gtd-read,gtd-reading,gtd笔记-read,"D:\Links\gtd-cmd-v2.bat read ""{%p}""",文件名
+gtd-wait,,gtd笔记-wait,"D:\Links\gtd-cmd-v2.bat wait ""{%p}""",文件名
+habit,,习惯养成 habits.md,D:\2Assort\Workspace\1=Inbox\habits.md,无
+hifini,song,搜歌,https://www.hifini.com/search-{%p}.htm,搜索关键词
+ideas,,笔记-flash ideas,xedit(D:\2Assort\Workspace\8=Idea\flash-ideas.md),无
+jd,,京东搜索,https://search.jd.com/Search?keyword={%p},搜索关键词
+keys,,打开快捷键定义文件,edit(%A_ScriptDir%\keys-default.txt);edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-leexioua.txt),无
+keysd,,热键定义-default,edit(%A_ScriptDir%\keys-default.txt),无
+keysl,,热键定义-leexioua,edit(%A_ScriptDir%\keys-leexioua.txt),无
+keysu,,热键定义-user,edit(%A_ScriptDir%\keys-user.txt),无
+lrc,,歌词搜索,https://www.google.com/search?q={%p}+歌词,搜索关键词
+luoxue,,洛雪音乐搜索,"show(exe:lx-music-desktop.exe);delayif(300,exe:lx-music-desktop.exe,send,!q,100,cbsong);callback(cbsong,send,^a{%p}{enter})",搜索关键词
+mdc,,MD代码注解,"send(^x);send(```js{enter 2}```{Up}^v,300)",无
+movel,ml,窗口左移屏幕,send(#+{Left}),无
+mover,mr,窗口右移屏幕,send(#+{Right}),无
+my,,2Assort文件搜索,"findit(""file:path:D:\2Assort {%p}"",0)",搜索关键词
+MyLinks,links,打开Links目录,D:\Links,无
+nlog,,打开每日日志,vgo nlog,无
+noteit,,添加笔记,"copyTitleText;delaycb(50,cbNoteit,open,alist);callback(cbNoteit,delayif,600,exe:sublime,send,^{end}{enter}{home}```js{enter}^v{enter}{home}```{enter})",无
+offd,,生成指定偏移日期字符,send(+{home});send(offDate({%p})),距今天偏移天数，过去为负数
+offline,,offline.md,D:\2Assort\Workspace\1=Inbox\offline.md,无
+plan,,计划任务 plan.md,D:\2Assort\Workspace\1=Inbox\plan.md,无
+previewx,xview,QuickLook最大化预览,"delaycb(10,cbpx,preview,{%p});callback(cbpx,runcmds,500,showQuickLook,winmax)",文件名
+push,,push xyz,"ideas;send(^{home}- {%p}{enter}+{home} {bs},300)",条目内容
+pushbook,pushb,push-book,push(@book:);pushitem({%p}),条目内容
+pushdida,pushd,push-dida,push(@dida:);pushitem({%p}),条目内容
+pushhabit,pushh,push-habit,push(@habit:);pushitem({%p}),条目内容
+pushidea,pushi,push-idea,push(@idea:);pushitem({%p}),条目内容
+pushitem,,push sub fn internal,"nothing({%p});vclip(vparam);send(^{home}{end}{space}^v,500)",条目内容
+pushplan,pushp,push-plan,push(@plan:);pushitem({%p}),条目内容
+pushquestion,pushq,push-question,push(@question:);pushitem({%p}),条目内容
+pushreview,pushr,push-review,push(@review:);pushitem({%p}),条目内容
+pushthink,,push-think,push(@think:);pushitem({%p}),条目内容
+pushtodo,pusht,push-todo,"push([ ] @todo:);vclip(vparam);send(^{home}{end}{space}^v @,500,strd);callback(strd,send,offDate())",条目内容
+pushword,pw,push-word,push(@word:);pushitem({%p}),条目内容
+qevernote,q,印象笔记搜索,"safeActivate(%evernote%);sendif(exe:Evernote,{F6}{%p}{enter},500)",搜索关键词
+qindex,,Quick-index,D:\2Assort\Quick-index.xlsm,无
+qlk,,QuickLook窗口切换,showQuickLook,无
+qs,,搜索快速入门,g {%p} quick start,搜索关键词
+qtag,,印象笔记标签搜索,"safeActivate(%Evernote%);sendif(exe:Evernote,{F6}tag:{%p}{enter},500)",搜索关键词
+qtitle,qt,印象笔记标题搜索,"safeActivate(%Evernote%);sendif(exe:Evernote,{F6}intitle:{%p}{enter},500)",搜索关键词
+review,,过去7日修改的笔记回顾,find file:path:D:\2Assort\Workspace dm:last7days,无
+safeActivate,"a,active,activate",切换打开应用程序,内置动作 切换打开应用程序,完整文件路径
+setm,,打开修改配置-mine,edit(%A_ScriptDir%\xfold-p1-leexioua.ini),无
+setx,,查找xfold配置,f xfold-*.ini,无
+sfn,,切换SpaceFn开关,spaceFn_toggleOnOff,无
+snp,,Snipaste保存查看,"find(Snipaste_);sendif(exe:everything.exe,datestr(yyyyMM),500)",无
+so,,切换SwitchOn开关,toggleSwitchOn,无
+sokeys,,SwitchOn快捷键定义信息,alert(getSwitchOnKeysTips()),无
+std,,搜索缩写,g what does {%p} stand for,搜索关键词
+text,,Filelocator快速搜索,"delaycb(50,cbLocator,show,exe:FileLocatorPro.exe);callback(cbLocator,delayif,200,exe:FileLocatorPro,send,^n!c,100,cbText);callback(cbText,send,{%p}{enter});delayif(300,!exe:FileLocatorPro.exe,runcmds,2000,xx gtd,text {%p})",搜索关键词
+todo,,待办事项 todo.md,edit(D:\2Assort\Workspace\1=Inbox\todo.md),搜索关键词
+tools,,打开软件工具目录,%ProgramxFiles%,无
+tosave,,保存文本到当前SublimeText窗口,"copyTitleText;delaycb(50,cbcopytrans,show,exe:sublime);callback(cbcopytrans,delayif,600,exe:sublime,send,^{end}{enter}{home}```js{enter}^v{enter}{home}```{enter})",无
+urldecode,urlde,url解码,内置函数 url解码,字符串
+urlencode,urlen,url编码,内置函数 url编码,字符串
+values,,本地配置项打开修改,xedit %Temp%\xfold.values.ini,无
+vcollect,vcol,收藏笔记预览-collection,xview(D:\2Assort\Workspace\#notes-list.md),条目内容
+ws,,打开gtd目录,D:\2Assort\Workspace,无
+x,,locator文本内容搜索-all,%AUTOHOTKEY_PATH% D:\Links\filelocator\locator-cmd-x.ahk all {%p},搜索关键词
+xmy,,搜索我的文件,%AUTOHOTKEY_PATH% D:\Links\filelocator\locator-cmd-x.ahk my {%p},搜索关键词
+xx,,locator快捷搜索,%AUTOHOTKEY_PATH% D:\Links\filelocator\locator-cmd-x.ahk {%p},分类及搜索关键词
+xxset,,locator快捷搜索分类配置,edit(D:\Links\settings-ahk.ini),无
+youhis,,Youtube历史搜索,"open(format(https://www.youtube.com/feed/history?query={},urlencode({%p})))",搜索关键词
+yz,,影子输入法自定义词汇,edit(D:\ProgramxFiles\Yzime\Data\leexioua\customs.csv),无
