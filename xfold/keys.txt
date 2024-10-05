@@ -37,14 +37,14 @@ holdonLBtnWhen(Space)
 holdonLBtnWhen(Tab)
 holdonLBtnWhen(+Tab)
 
-LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
+LButton+1 1 => xedit(%A_ScriptDir%\keys.txt)
 LButton+t t => copyTitleText
 
 LButton+t t t => title
 
 LButton+t t t t => title
 LButton+p p p p => process
-LButton+r r r r => run(rstr({%x}))
+
 LButton+s s s s => xedit(%Link_notes%);send(^{end},500)
 
 
@@ -57,4 +57,4 @@ LButton+^v@explorer.exe => explorer_clipboardSave2Txt
 ; SwitchOn+ key definition
 ; ^!] => toggleSwitchOn
 ^!\ => toggleSwitchOn
-SwitchOn+e@chrome.exe => open(https://youdao.com/result?word={%x}&lang=en)
+#english#e@chrome.exe => open(https://youdao.com/result?word={%x}&lang=en)

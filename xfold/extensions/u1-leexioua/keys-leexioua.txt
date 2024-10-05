@@ -1,4 +1,4 @@
-; 个人使用快捷键配置，依赖相关软件工具及脚本 xfold.ini @leexioua
+; xfold-leexioua
 
 F1 => delay(10,xfoldCmdline)
 F7 => redoHotkey
@@ -35,8 +35,11 @@ F12 F12 => setLBtnOn(3000)
 ;$` $` $` $` => xfoldCmdline
 $` $` $` $` => send({Esc})
 
+; Snipaste - PixPin
 F1 F1 F1 F1 => send(#!{F1})
 F3 F3 F3 F3 => send(#!{F3})
+
+
 F10 F10 F10 F10 => getAccInfo
 
 LButton+^c => stripCopy
@@ -90,8 +93,8 @@ LButton+F11 F11 => adcTaskAdd
 LButton+F12 F12 => ahkhelp
 
 LButton+3 3 => cxkeys
-LButton+4 4 => preview(%A_ScriptDir%\xfold-cmd-leexioua.csv)
-LButton+6 6 => open(https://dida365.com/webapp/)
+LButton+4 4 => preview(%A_ScriptDir%\docs\xfold-cmd-leexioua.csv)
+LButton+6 6 => dida365
 LButton+b b => bili({%x})
 LButton+r r => delay(100,xfoldCmdlineRun,{%x})
 LButton+v v => open(https://forvo.com/search/{%x})
@@ -101,16 +104,15 @@ LButton+F10 F10 F10 F10 => getAccAllText
 
 LButton+1 1 1 1 => send(#!{F1})
 LButton+3 3 3 3 => send(#!{F3})
-LButton+c c c c => edit(%WORKSPACE_HOME%\#notes-list.md);send(^{end},500)
+LButton+c c c c => xedit(%WORKSPACE_HOME%\#notes-list.md);send(^{end},500)
 LButton+d d d d => md({%x})
 LButton+f f f f => finditByEverythingFullPath({%x})
 LButton+n n n n => tosave
-LButton+q q q q => qst({%x})
-LButton+v v v v => send(^c);edit(%temp%\vholder-xfold.txt);send(^{end}{enter}^v, 500)
+LButton+q q q q => qtag({%x})
+LButton+r r r r => send(^c);delay(200,open,clipboardlink())
 LButton+v v v v => send(^c);send(!{tab},200);send(^{end}{enter}^v, 500)
 LButton+w w w w => wx({%x})
 LButton+x x x x => x {%x}
-
 
 +Enter@Everything.exe => evcmd
 ;^Enter@Everything.exe => evcmd
@@ -126,7 +128,7 @@ e e@SumatraPDF.exe => eudicQuery
 ^d@sublime_text.exe => send(^+k)
 ^e@sublime_text.exe => send(^p)
 
-LButton+1@sublime_text.exe => send(!c);delay(100,run,clipboard2cmd,previewx)
+LButton+1@sublime_text.exe => send(!c);delay(100,run,c,previewx)
 LButton+c c@sublime_text.exe => mdCheckToggle
 
 
@@ -138,7 +140,7 @@ LButton+c c@sublime_text.exe => mdCheckToggle
 !Right@ADC.exe => adc_execute(Move Task Bottom)
 
 
-!e@FileLocatorPro.exe => send(!+c);sleep(200);edit({%c})
+!e@FileLocatorPro.exe => send(!+c);delay(100,run,c,xedit)
 
 !c@WizTree64.exe => send(^!c)
 
@@ -190,84 +192,27 @@ XButton2 => send(^!+=)
 #!F5 => configbak_Backup
 configbak_MonthlyBackup()
 
+#explorer#v@explorer.exe => xview({%x})
 
-; SwitchOn+ keys
-SwitchOn+e@chrome.exe => en
-SwitchOn+e@SumatraPDF.exe => en
-SwitchOn+v@explorer.exe => xview({%x})
+#english#e@chrome.exe => en
+#english#e@SumatraPDF.exe => en
+#english#e@Koodo.exe => en
 
-; matepad
-; SwitchOn++d +d => send(#d)
-; SwitchOn+1 1 => xsend(f1)
-; SwitchOn+2 2 => xsend(f2)
-; SwitchOn+1 1 1 1 => xsend(f1,4)
-; SwitchOn+3 3 3 3 => xsend(f3,4)
+#matepad#+d +d => send(#d)
+#matepad#1 1 => xsend(f1)
+#matepad#2 2 => xsend(f2)
+#matepad#1 1 1 1 => xsend(f1,4)
+#matepad#3 3 3 3 => xsend(f3,4)
 
+#potplayer#+,@PotPlayerMini64.exe => send(x)
+#potplayer#+.@PotPlayerMini64.exe => send(c)
+#potplayer#+/@PotPlayerMini64.exe => send(z)
+#potplayer#+n@PotPlayerMini64.exe => send(^!+{PgDn})
+#potplayer#+p@PotPlayerMini64.exe => send(^!+{PgUp})
+#potplayer#f@PotPlayerMini64.exe => send({Enter})
+#potplayer#j@PotPlayerMini64.exe => send({Left 2})
+#potplayer#k@PotPlayerMini64.exe => send({Space})
+#potplayer#l@PotPlayerMini64.exe => send({Right 2})
 
 delay(50,fnBackslash_toggleOnOff)
-;delay(2000,toggleSwitchOn)
 
-
-; bak config / samples
-; \@eudic.exe => send(^!+\)
-; ^[ ^[ => setLBtnOn(3000)
-; ^] ^] => toggleLBtnOn()
-; LButton+^] ^] => toggleLBtnOn()
-;!c !c@sublime_text.exe => mdCheckToggle ;疑似引起!c冲突
-;#` => restartAltRun
-;#q => restartQuickLook
-;$!Tab => send(!{Tab})
-;$^Tab => send(^{Tab})
-;$` $` $` $`=> showQuickLook
-;$` $` => send(!r)
-;$` $` => showQuickLook;send({Esc})
-;$F1 $F1 $F1 => toAltRun_xfoldCmd
-;$F12 $F12 => alertLastCmd
-;$F2 $F2 $F2 $F2 => markdown_clipboardImageURI
-;$F2 $F2 $F2 => toAltRun_ahkCmd
-;$F4 $F4 $F4 $F4 => gtd
-;$F4 $F4 => redo
-;$F7 $F7 $F7 => toAltRun_evernoteTerms
-;$F8 $F8 $F8 => toAltRun_everythingTerms
-;$F9 $F9 $F9 => toAltRun_mailCmd
-;^+c@excel.exe => excel_BrushStart
-;^2@sublime_text.exe => send(^p);send({U+0040},200) ; U+0040 => @
-;^m ^m => en({%p})
-;^RButton => clipboard({%x});send(^!+x,200)
-;Browser_Back => send({Esc})
-;Browser_Home => send(#d)
-;F1 F1 => xfoldCmdline
-;F1 F1 => delay(10,xfoldCmdline,{%x});delay(500,sendif,xfold-cmd,{end})
-;F3 F3 => x({%p})
-;LButton+$F12 $F12 => open(https://wyagd001.github.io/zh-cn/docs/index.htm)
-;LButton+$F5 $F5 => edit(%A_ScriptDir%\xfold.ahk)
-;LButton+1 1 => edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-default.txt)
-;LButton+2 2 => edit(%A_ScriptDir%\keys-leexioua.txt)
-;LButton+5 5 => edit(%A_ScriptDir%\xfold.ini)
-;LButton+8@sublime_text.exe => sublimetext_convertToUTF8
-;LButton+a a a a@sublime_text.exe => viewAhkFile({%x})
-;LButton+e => clipboard({%x});send(^v{enter},300);safeActivate(%eudic%) ;配置方式实现英语查词
-;LButton+Left => send({PgUp})
-;LButton+m m@sublime_text.exe => sublimetext_markdownSyntax
-;LButton+q => evernoteSearch
-;LButton+r r r r => run({%p})
-;LButton+Right => send({PgDn})
-;LButton+x x x x@sublime_text.exe => mdCheckToggle
-;SwitchOn++,@PotPlayerMini64.exe => send(x)
-;SwitchOn++.@PotPlayerMini64.exe => send(c)
-;SwitchOn++/@PotPlayerMini64.exe => send(z)
-;SwitchOn++n@PotPlayerMini64.exe => send(^!+{PgDn})
-;SwitchOn++p@PotPlayerMini64.exe => send(^!+{PgUp})
-;SwitchOn+f => alert(f1)
-;SwitchOn+f f => alert(f2)
-;SwitchOn+f f f => alert(f3)
-;SwitchOn+f f f f => alert(f4)
-;SwitchOn+f@PotPlayerMini64.exe => send({Enter})
-;SwitchOn+j@PotPlayerMini64.exe => send({Left 2})
-;SwitchOn+k@PotPlayerMini64.exe => send({Space})
-;SwitchOn+l@PotPlayerMini64.exe => send({Right 2})
-;SwitchOn+LButton+f => alert(lbtn+f1)
-;SwitchOn+LButton+f f => alert(lbtn+f2)
-;SwitchOn+LButton+f f f => alert(lbtn+f3)
-;SwitchOn+LButton+f f f f=> alert(lbtn+f4)
-;Tab Tab => send(!{Tab})

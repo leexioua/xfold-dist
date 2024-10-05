@@ -1,4 +1,4 @@
-﻿命令,别名,功能说明,命令行,参数,default,leexioua,work
+﻿命令,别名,功能说明,命令行,参数,default,leexioua,huawei
 alert,echo,弹窗提示,内置动作 弹窗消息,消息内容,√,,
 amap,,高德地图搜索,https://ditu.amap.com/search?query={%p},搜索关键词,√,,
 baidu,b,百度搜索,https://www.baidu.com/s?wd={%p},搜索关键词,√,,
@@ -7,8 +7,8 @@ bili,,B站搜索,https://search.bilibili.com/all?keyword={%p},搜索关键词,�
 bmap,map,百度地图搜索,https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D{%p},搜索关键词,√,,
 book,,书籍搜索,https://search.douban.com/book/subject_search?search_text={%p},搜索关键词,√,,
 cfg,set,xfold.ini配置,edit(%A_ScriptDir%\xfold.ini),无,√,,
-cmds,,xfold命令行参考,"preview(%A_ScriptDir%\xfold-cmd.csv);delay(500,winmax)",无,√,,
-cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\xfold-cmd-default.csv);delay(500,winmax)",无,√,,
+cmds,,xfold命令行参考,"preview(%A_ScriptDir%\docs\xfold-cmd.csv);delay(500,winmax)",无,√,,
+cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\docs\xfold-cmd-default.csv);delay(500,winmax)",无,√,,
 debug,,切换调试模式,loglevel(debug),无,√,,
 deepl,"fanyi,fy,translate",DEEPL翻译,https://www.deepl.com/translator#en/zh/{%p},搜索关键词,√,,
 douban,"d,db",豆瓣搜索,https://www.douban.com/search?q={%p},搜索关键词,√,,
@@ -21,9 +21,9 @@ gb,,谷歌百度搜索,g({%p});b({%p}),搜索关键词,√,,
 gi,,谷歌图片搜索,https://www.google.com/search?q={%p}&tbm=isch,搜索关键词,√,,
 github,gh,Github搜索,https://github.com/search?q={%p},搜索关键词,√,,
 gmap,,谷歌地图搜索,https://maps.google.com/maps?q={%p}&um=1,搜索关键词,√,,
-h,help,xfold帮助文档,open(%A_ScriptDir%\README.pdf);open(%A_ScriptDir%\xfold-shortcuts.pdf),无,√,,
+h,help,xfold帮助文档,open(%A_ScriptDir%\docs\README.pdf);open(%A_ScriptDir%\docs\xfold-shortcuts.pdf),无,√,,
 info,,Tooltip提示信息,内置动作 Tooltip提示,提示内容,√,,
-keys,,打开快捷键定义文件,edit(%A_ScriptDir%\keys-default.txt);edit(%A_ScriptDir%\keys-user.txt),无,√,,
+keys,,打开快捷键定义文件,edit(%A_ScriptDir%\keys.txt),无,√,,
 movie,,电影搜索,https://search.douban.com/movie/subject_search?search_text={%p}&cat=1002,搜索关键词,√,,
 nothing,n,空任务 不执行任何动作,内置动作 不作任何动作,任意,√,,
 open,"o,r,run",打开文件/网址/程序/xfold-cmd等,内置动作 打开运行,文件名/网址/注册表路径/xfold-cmd,√,,
@@ -57,10 +57,10 @@ bay,,海盗湾搜索,https://thehiddenbay.com/search/{%p},搜索关键词,,√,
 bfn,,切换\作为LButton替换键,fnBackslash_toggleOnOff,无,,√,
 bks,,书籍本地搜索,find path:D:\2Books|D:\downloads|Z:\aria2 {%p},搜索关键词,,√,
 bmapn,,百度地图搜索-南京,https://map.baidu.com/?newmap=1&ie=utf-8&s=s&wd=南京%20{%p},搜索关键词,,√,
-cmds,,xfold命令行参考,"preview(%A_ScriptDir%\xfold-cmd.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
-cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\xfold-cmd-default.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
-cmdsl,,xfold命令行参考-leexioua,"preview(%A_ScriptDir%\xfold-cmd-leexioua.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
-cmdsw,,xfold命令行参考-work,"preview(%A_ScriptDir%\xfold-cmd-work.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
+cmds,,xfold命令行参考,"preview(%A_ScriptDir%\docs\xfold-cmd.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
+cmdsd,,xfold命令行参考-default,"preview(%A_ScriptDir%\docs\xfold-cmd-default.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
+cmdsl,,xfold命令行参考-leexioua,"preview(%A_ScriptDir%\docs\xfold-cmd-leexioua.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
+cmdsw,,xfold命令行参考-work,"preview(%A_ScriptDir%\docs\xfold-cmd-work.csv);delay(300,showQuickLook);delay(500,winmax)",无,,√,
 copytrans,,复制到sublimetext,"copyTitleText;delaycb(50,cbcopytrans,show,exe:sublime);callback(cbcopytrans,delayif,600,exe:sublime,send,^{end}{enter}{home}```js{enter}^v{enter}{home}```{enter})",无,,√,
 cxkeys,,Capslock+按键帮助,"preview(D:\2Assort\cheatsheet\Capslock+.png);delay(500,showQuickLook)",无,,√,
 dida365,,滴答清单,https://dida365.com/webapp,无,,√,
@@ -86,10 +86,6 @@ habit,,习惯养成 habits.md,D:\2Assort\Workspace\1=Inbox\habits.md,无,,√,
 hifini,song,搜歌,https://www.hifini.com/search-{%p}.htm,搜索关键词,,√,
 ideas,,笔记-flash ideas,xedit(D:\2Assort\Workspace\8=Idea\flash-ideas.md),无,,√,
 jd,,京东搜索,https://search.jd.com/Search?keyword={%p},搜索关键词,,√,
-keys,,打开快捷键定义文件,edit(%A_ScriptDir%\keys-default.txt);edit(%A_ScriptDir%\keys-user.txt);edit(%A_ScriptDir%\keys-leexioua.txt),无,,√,
-keysd,,热键定义-default,edit(%A_ScriptDir%\keys-default.txt),无,,√,
-keysl,,热键定义-leexioua,edit(%A_ScriptDir%\keys-leexioua.txt),无,,√,
-keysu,,热键定义-user,edit(%A_ScriptDir%\keys-user.txt),无,,√,
 lrc,,歌词搜索,https://www.google.com/search?q={%p}+歌词,搜索关键词,,√,
 luoxue,,洛雪音乐搜索,"show(exe:lx-music-desktop.exe);delayif(300,exe:lx-music-desktop.exe,send,!q,100,cbsong);callback(cbsong,send,^a{%p}{enter})",搜索关键词,,√,
 mdc,,MD代码注解,"send(^x);send(```js{enter 2}```{Up}^v,300)",无,,√,
@@ -123,8 +119,7 @@ qtag,,印象笔记标签搜索,"safeActivate(%Evernote%);sendif(exe:Evernote,{F6
 qtitle,qt,印象笔记标题搜索,"safeActivate(%Evernote%);sendif(exe:Evernote,{F6}intitle:{%p}{enter},500)",搜索关键词,,√,
 review,,过去7日修改的笔记回顾,find file:path:D:\2Assort\Workspace dm:last7days,无,,√,
 safeActivate,"a,active,activate",切换打开应用程序,内置动作 切换打开应用程序,完整文件路径,,√,
-setm,,打开修改配置-mine,edit(%A_ScriptDir%\xfold-p1-leexioua.ini),无,,√,
-setx,,查找xfold配置,f xfold-*.ini,无,,√,
+setx,,查找xfold配置,f xfold*.ini,无,,√,
 sfn,,切换SpaceFn开关,spaceFn_toggleOnOff,无,,√,
 snp,,Snipaste保存查看,"find(Snipaste_);sendif(exe:everything.exe,datestr(yyyyMM),500)",无,,√,
 so,,切换SwitchOn开关,toggleSwitchOn,无,,√,
@@ -145,3 +140,36 @@ xx,,locator快捷搜索,%AUTOHOTKEY_PATH% D:\Links\filelocator\locator-cmd-x.ahk
 xxset,,locator快捷搜索分类配置,edit(D:\Links\settings-ahk.ini),无,,√,
 youhis,,Youtube历史搜索,"open(format(https://www.youtube.com/feed/history?query={},urlencode({%p})))",搜索关键词,,√,
 yz,,影子输入法自定义词汇,edit(D:\ProgramxFiles\Yzime\Data\leexioua\customs.csv),无,,√,
+ali,,阿里公有云搜索,"open(format(https://www.alibabacloud.com/zh/search?_p_lc=1&k={},base64({%p})))",,,,√
+arch,,谷歌架构图搜索,gi architecture of {%p},搜索关键词,,,√
+aws,,Amazon公有云搜索,https://aws.amazon.com/search/?searchQuery={%p},搜索关键词,,,√
+awsz,,Amazon公有云搜索-中文,https://www.amazonaws.cn/search/?searchQuery={%p},搜索关键词,,,√
+az,,Azure公有云搜索,https://azure.microsoft.com/en-us/search/?q={%p},搜索关键词,,,√
+azz,,Azure公有云搜索-中文,https://azure.microsoft.com/cn-zh/search/?q={%p},搜索关键词,,,√
+clue,,EI-Oversea-PE.xmind,D:\Onebox\Workspace\6=Archives\EI\EI-Oversea-PE.xmind,无,,,√
+coa,,COA编码搜索,https://pbi.huawei.com/pbiops/offering-coa/detail/offering-coa-information/?entityNo={%p},搜索关键词,,,√
+daily,,daily回顾,edit(%WORKSPACE_HOME%\9=AList\daily-retrospect.md),无,,,√
+ei,,EI-links.md,%WORKSPACE_HOME%\6=Archives\EI\EI-links.md,无,,,√
+eid,,EI工作目录,D:\Onebox\Workspace\6=Archives\EI,无,,,√
+eim,,EI资料,open(D:\Onebox\Workspace\6=Archives\EI\EI-materials.md),无,,,√
+hc,,华为公有云搜索,"open(format(https://www.huaweicloud.com/s/{},RegExReplace(base64(%{%p}%),=+$)))",,,,√
+hr,,iHR信息搜索,http://hr.huawei.com/main/#/SearchEmp?searchStr={%p},无,,,√
+hwfy,fy,华为翻译,"send(^c);open(https://translate.huawei.com);sendif(Huawei Translate,^v,2000)",无,,,√
+is,,isales合同搜索,http://isales.huawei.com/isales/aisearch/#/UI-contractSearch?searchText={%p}&fromlocale,搜索关键词,,,√
+isc,,isc合同搜索,https://isc.huawei.com/iscp/app/#/pas/ProductAmountSplitContractDetail?isSubModule=1&contractNumber={%p},搜索关键词,,,√
+mail,,outlook邮件搜索,%MyLinks%\work-x1\mail-cmd.ahk {%p},搜索关键词,,,√
+notesbak,,笔记归档,preview(D:\Onebox\Archives\MyNotes\notes-archives-20230707-all.csv),无,,,√
+pipe,,SA项目管道搜索,"show(title:pipeline-data-2024.xlsx);delayif(300,title:pipeline-data-2024.xlsx,send,^f,100,cbkeyword);callback(cbkeyword,send,^a{%p}{enter})",无,,,√
+sa,,SA团队空间,https://onebox.huawei.com/#teamspaceFile/1/0/10211249,无,,,√
+sac,,SA团队空间-core,https://onebox.huawei.com/#teamspaceFile/1/0/11440365,无,,,√
+saprj,,SA项目管道,https://onebox.huawei.com/v/2cfd3bdeda21d3ed4a71595f01e44b40?type=0,无,,,√
+summary,sum,总结目录,D:\Onebox\Workspace\6=Archives\EI\06 Summary,无,,,√
+team,,EI团队阵型.xlsx,D:\Onebox\Workspace\6=Archives\EI\EI团队阵型.xlsx,无,,,√
+term,sy,华为述语搜索,http://3ms.huawei.com/term/#/main/termSearch?searchValue={%p},搜索关键词,,,√
+thinking,,工作梳理思考,ashow D:\Workspace\6=Archive\EI\工作梳理思考-2024.xmind,无,,,√
+track,,项目跟踪,D:\Workspace\6=Archive\EI\2024海外数据项目跟踪.xlsx,无,,,√
+w3,"w,3",w3信息搜索,http://w3.huawei.com/unisearch/index.html?keyword={%p},搜索关键词,,,√
+webui,,谷歌用户界面设计搜索,gi Web User Interface of {%p},搜索关键词,,,√
+welink,"m,msg",welink发送消息,"send({raw}{%p},300);send(^!d)",搜索关键词,,,√
+wtodo,wt,work-todo.xlsx,D:\Onebox\Workspace\6=Archives\EI\work-todo.xlsx,无,,,√
+xinsh,,心声社区搜索,https://xinsheng.huawei.com/next/plus/#/search?keyword={%p}&type=all,搜索关键词,,,√

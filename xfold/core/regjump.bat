@@ -12,4 +12,4 @@ taskkill /F /IM regedit.exe >NUL 2>NUL
 cmd /c reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit" /v "LastKey" /d %regpath% /f
 start regedit.exe
 
-@pause
+rem pause
