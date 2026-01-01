@@ -1,0 +1,10 @@
+; xfold-explorer
+
+!c@explorer.exe => getCopyText				;复制文件完整路径
+!e@explorer.exe => xedit					;编辑器打开
+LButton+^v@explorer.exe => savethere		;保存剪贴板文本到文件-在当前目录
+
+#explorer#v@explorer.exe => xview({%x})		;预览@explorer
+
+explorer_dialogueJump(~^d)					;打开文件对话框跳转-到最近活动目录
+;delay(10000,tooltip,ctrl+d 可在打开文件对话框跳转到最近活动目录,5000)	

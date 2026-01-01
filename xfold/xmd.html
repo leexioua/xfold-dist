@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <link rel="shortcut icon" href="./res/xfold-cmd.ico">
+        <meta charset="utf-8">
+        <title>xmd | xfold-cmd</title>
+    </head>
+</html>
+<!-- xmd.html?cmd= -->
+<script type="text/javascript">
+    function getNavUrl() {
+        return window.location.search.replace("?", "");
+    };
+
+    function getParams(url) {
+        var params = {};
+        url = url.toLowerCase();
+        url = url.split('&');
+
+        var length = url.length;
+        for(var i=0; i<length; i++) {
+            var prop = url[i].slice(0, url[i].search('='));
+            var value = url[i].slice(url[i].search('=')).replace('=', '');
+            params[prop] = value;
+        }
+        return params;
+    };
+
+
+    var params = getParams(getNavUrl());
+    console.log(params);
+    if(params.cmd)
+        window.open("xmd://"+params.cmd)
+    window.close();
+</script>

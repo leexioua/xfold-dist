@@ -1,0 +1,4 @@
+; xfold-everyting
+
+LButton+f => findit({%x})			;Everything搜索-选中文本-截取文件名
+LButton+f f f f => findit({%x},0)	;Everything搜索-选中文本-全路径

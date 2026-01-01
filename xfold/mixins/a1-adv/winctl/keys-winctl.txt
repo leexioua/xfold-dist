@@ -1,0 +1,8 @@
+#= => winTransparentUp		;调节窗口透明度-增加
+#- => winTransparentDown	;调节窗口透明度调节-减小
+
+LButton+F12 => winTopToggle	;置顶窗口切换
+LButton+u => hide			;隐藏当前窗口
+
+LButton+c c => winsize(0.9)	;还原当前窗口-居中90%
+LButton+m m => winmax		;最大化当前窗口

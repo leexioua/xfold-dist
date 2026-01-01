@@ -44,3 +44,10 @@ Windows Registry Editor Version 5.00
 ; excel-domain-href-no-warning
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Security]
 "DisableHyperlinkWarning"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+"ExternalProtocolDialogShowAlwaysOpenCheckbox"=dword:00000001
+"AutoLaunchProtocolsFromOrigins"="[{\"allowed_origins\": [\"*\",\"http://www.leexioua.top:18888/\"], \"protocol\": \"xmd\"}]"
+
+; chrome://settings/content/popups
+; chrome://settings/handlers

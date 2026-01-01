@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>xfold-cmd ©leexioua</title>
+	<link rel="shortcut icon" href="./res/xfold-cmd.ico">
+	<style type="text/css">
+		div {
+			margin: 10px;
+		}
+
+		td {
+			padding: 0 10px;
+			font-size: small;
+		}
+
+		.btn-primary:hover {
+		    color: #fff;
+		    background-color: #286090;
+		    border-color: #204d74;
+		}
+		.btn:hover, .btn:focus, .btn.focus {
+		    color: #333;
+		    text-decoration: none;
+		}
+		.btn-primary {
+		    color: #fff;
+		    background-color: #337ab7;
+		    border-color: #2e6da4;
+		}
+		.btn {
+		    display: block;
+		    padding: 6px 12px;
+		    margin-bottom: 0;
+		    font-size: 14px;
+		    font-weight: normal;
+		    line-height: 1.42857143;
+		    text-align: center;
+		    white-space: nowrap;
+		    vertical-align: middle;
+		    -ms-touch-action: manipulation;
+		    touch-action: manipulation;
+		    cursor: pointer;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    background-image: none;
+		    border: 1px solid transparent;
+		    border-radius: 4px;
+		}
+		input, button, select, textarea {
+		    font-family: inherit;
+		    font-size: inherit;
+		    line-height: inherit;
+		}
+		button, html input[type="button"], input[type="reset"], input[type="submit"] {
+		    -webkit-appearance: button;
+		    cursor: pointer;
+		}
+		button, select {
+		    text-transform: none;
+		}
+		button {
+		    overflow: visible;
+		}
+		button, input, optgroup, select, textarea {
+		    margin: 0;
+		    font: inherit;
+		    color: inherit;
+		}
+		button {
+		    white-space: nowrap;
+		}
+		* {
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+
+	</style>
+	<script type="text/javascript">
+		var mycmds = {
+			"b": "bing",
+			"bi": "bingimg",
+			"d": "douban",
+			"db": "douban",
+			"e": "eu",
+			"en": "eu",
+			"fanyi": "deepl",
+			"lrc": "lrcb",
+			"mm": "markmap",
+			"mm2": "markmap2",
+			"o": "run",
+			"open": "run",
+			"r": "run",
+			"song": "hifini",
+			"trans": "deepl",
+			"vo": "forvo",
+			"wk": "wiki",
+			"y": "youtube",
+			"yg": "ygen",
+			"you": "youtube",
+			"z": "zhihu",
+			"zh": "zhihu",
+
+			"gb": "b {%p};g {%p}",
+			"bg": "g {%p};b {%p}",
+			"lrc": "b {%p}+歌词;g {%p}+歌词",
+
+			"amapn": "amap 南京 {%p}",
+			"arch": "bi architecture of {%p}",
+			"bmapn": "bmap 南京{%p}",
+			"diff": "b difference between {%p}",
+			"diffz": "bing {%p}的区别",
+			"lrcb": "b {%p}+歌词",
+			"lrcg": "g {%p}+歌词",
+			"ori": "b name origin of {%p}",
+			"qs": "b {%p} quick start",
+			"qsz": "b {%p} 快速入门",
+			"std": "b what does {%p} stand for",
+			"webui": "bi Web User Interface of {%p}",
+
+			"eu": "eudic://dict/{%p}",
+			"zha": "zhihu://search?q={%p}",
+			"tba": "taobao://s.taobao.com?q={%p}",
+			"pdda": "pinduoduo://com.xunmeng.pinduoduo/search_result.html?search_key={%p}",
+			"jda": "openjd://virtual?params=%7B%22des%22%3A%22productList%22%2C%22keyWord%22%3A%22{%p:urlen}%22%2C%22from%22%3A%22search%22%2C%22category%22%3A%22jump%22%7D",
+
+			"run": "./xmd.html?cmd={%p}",
+
+			"actions": "./markmap/actions.html",
+			"anytxt": "http://www.leexioua.top:39921/",
+			"arian": "http://www.leexioua.top:51009/ariang/#!/new",
+			"ariat": "http://www.leexioua.top:51009/ariang/#!/new/task?url={%p:base64}",
+			"baiduimg": "https://image.baidu.com/search/index?word={%p}",
+			"evf": "http://www.leexioua.top:31080/?search={%p}",
+			"ip": "./ip.html",
+			"mad": "https://mad.firstmark.com/",
+			"markmap": "./markmap.html",
+			"markmap2": "./markmap/markmap.html",
+			"nym": "https://www.allacronyms.com/",
+			"plan": "./markmap/plan.html",
+			"pn": "https://www.pronouncenames.com/search?name={%p}",
+			"qi": ".",
+			"yb": "https://yabook.org/",
+
+
+			// from xfold*.ini
+			"amap": "https://ditu.amap.com/search?query={%p}",
+			"baidu": "https://www.baidu.com/s?wd={%p}",
+			"baike": "https://baike.baidu.com/search?word={%p}",
+			"bay": "https://thehiddenbay.com/search/{%p}",
+			"bili": "https://search.bilibili.com/all?keyword={%p}",
+			"bimg": "https://image.baidu.com/search/index?word={%p}",
+			"bing": "https://cn.bing.com/search?q={%p}",
+			"bingimg": "https://www.bing.com/images/search?q={%p}",
+			"bk": "https://baike.baidu.com/search?word={%p}",
+			"bmap": "https://map.baidu.com/?newmap=1&ie=utf-8&s=s&wd={%p}",
+			"book": "https://search.douban.com/book/subject_search?search_text={%p}",
+			"deepl": "https://www.deepl.com/translator#en/zh/{%p}",
+			"dida365": "https://dida365.com/webapp",
+			"douban": "https://www.douban.com/search?q={%p}",
+			"forvo": "https://forvo.com/search/{%p}",
+			"g": "https://www.google.com/search?q={%p}",
+			"gh": "https://github.com/search?q={%p}",
+			"gi": "https://www.google.com/search?q={%p}&tbm=isch",
+			"github": "https://github.com/search?q={%p}",
+			"gmap": "https://maps.google.com/maps?q={%p}&um=1",
+			"hifini": "https://www.hifini.com/search-{%p}.htm",
+			"jd": "https://search.jd.com/Search?keyword={%p}",
+			"libgen": "https://libgen.is/search.php?req={%p}",
+			"map": "https://ditu.amap.com/search?query={%p}",
+			"movie": "https://search.douban.com/movie/subject_search?search_text={%p}&cat=1002",
+			"olt": "https://www.oxfordlearnersdictionaries.com/definition/english/{%p}",
+			"translate": "https://www.deepl.com/translator#en/zh/{%p}",
+			"wiki": "https	://en.wikipedia.org/wiki/{%p}",
+			"wx": "https://weixin.sogou.com/weixin?type=2&query={%p}",
+			"ygen": "https://youglish.com/pronounce/{%p}/english?",
+			"youdao": "https://youdao.com/result?lang=en&word={%p}",
+			"youtube": "https://www.youtube.com/results?search_query={%p}",
+			"zhihu": "https://www.zhihu.com/search?type=content&q={%p}"
+		}
+
+		function xfoldCmd() {
+			var cmdline = document.getElementById("cmdline").value
+			xfoldCmdlineRun(cmdline)
+		}
+
+		function xfoldCmdlineRun(cmdline) {
+			if(cmdline) {
+
+				// 支持多个命令
+				if(cmdline.indexOf(";")>=0) {
+					cmds = cmdline.split(";")
+					for (var i = 0; i < cmds.length; i++) {
+						xfoldCmdlineRun(cmds[i])
+					}
+					return;
+				}
+
+				// const re = /(.+)\.(\w+)(\s+)?$/
+				const re = /(.+)\.(\w+)$/ //使用最后追加空格规避以.xxx结尾的参数情况 "g table.html "
+				let arr
+				if(arr = re.exec(cmdline)) { // table.en
+					cmd = arr[2]
+					param = arr[1].trim() 
+				} else { // en table
+					pos = cmdline.indexOf(" ")
+					cmd = pos>0?cmdline.substring(0,pos).trim():cmdline.trim()
+					param = pos>0?cmdline.substring(pos+1).trim():""				
+				}
+
+				if(cmd&&mycmds[cmd]) {
+					acmd = mycmds[cmd]
+					if(acmd.indexOf("{%p}")>=0 || acmd.indexOf("{p}")>=0) { //参数占位标识
+						acmd = acmd.replaceAll("{%p}",param)
+						acmd = acmd.replaceAll("{p}",param)						
+					} else { //没有参数占位标识
+						if(param) {
+							if(acmd.indexOf("http")==0&&acmd.lastIndexOf("=")==acmd.length-1) //省略占位 https://www.baidu.com/s?wd=
+								acmd += param
+							else //e table 别名 省略参数占位标识
+								acmd += " " + param
+						}
+					}
+
+					try {
+						acmd = acmd.replaceAll("{%p:urlen}",window.encodeURIComponent(param))
+						acmd = acmd.replaceAll("{p:urlen}",window.encodeURIComponent(param))
+
+						// base64Param = btoa(window.encodeURIComponent(param))
+						base64Param = btoa(param)
+						acmd = acmd.replaceAll("{%p:base64}",base64Param)
+						acmd = acmd.replaceAll("{p:base64}",base64Param)
+					} catch (e) {
+						//包含中文存在异常
+						acmd = acmd.replaceAll("{%p:base64}","")
+						acmd = acmd.replaceAll("{p:base64}","")
+					}
+
+					// alert(acmd)
+                    if(/^\w+:\/\//.test(acmd) || /^[.\/]/.test(acmd))
+						window.open(acmd,"_blank")
+					else
+						xfoldCmdlineRun(acmd)
+				} else { //如果未指定命令 使用 "b xx" 搜索
+					xfoldCmdlineRun("b " + cmdline)
+				}
+			}
+		}
+
+		window.onload = (event) => {
+			input = document.getElementById("cmdline")
+			input.addEventListener("keydown", handleEnter)
+
+			tips = document.getElementById("tips")
+
+			for (key in mycmds) {
+				tr = document.createElement("tr")
+
+				tdkey = document.createElement("td")
+				tdkey.style = "font-weight: bold"
+				txtkey = document.createTextNode(key)
+				tdkey.appendChild(txtkey);
+
+				tdcmd = document.createElement("td")
+				cmdkey = document.createTextNode(mycmds[key])
+				tdcmd.appendChild(cmdkey);
+
+				tr.appendChild(tdkey)
+				tr.appendChild(tdcmd)
+				tips.appendChild(tr)
+			}
+		}
+
+		function handleEnter(e) {
+			if(e.key.toLowerCase()=="enter") {
+				xfoldCmd()
+			}
+		}
+
+		function getWordAtPoint(x, y) {
+		    if (document.caretRangeFromPoint) {
+		        var range = document.caretRangeFromPoint(x, y);
+		        var textNode = range.startContainer;
+		        var text = textNode.data;
+		        var position = range.startOffset;
+
+		        // 向前和向后扫描，直到找到单词的边界
+		        var start = position, end = position;
+		        while (start > 0 && /\S/.test(text[start - 1])) {
+		            start--;
+		        }
+		        while (end < text.length && /\S/.test(text[end])) {
+		            end++;
+		        }
+
+		        return text.substring(start, end);
+		    }
+		    return null;
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<input id="cmdline" size="10" type="text" autofocus="autofocus" onfocus="this.select()" class="form-control" placeholder="在此输入命令行，例如：g table 或者 table.g，点击“搜索”按钮" style="min-width: 500px; min-height: 38px; max-width: 800px; max-height: 38px; display: block; width: 550px">
+	</div>
+	<div >
+		<button type="button" onclick="xfoldCmd()" class="btn btn-primary with-label" style="min-width: 100px; min-height: 38px; max-width: 180px; max-height: 38px; display: block; box-sizing: border-box">搜索</button>
+	</div>
+	<div><h3>命令参考：</h3></div>
+	<table id="tips">
+	</table>
+</body>
+</body>
+</html>
